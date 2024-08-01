@@ -1,0 +1,47 @@
+{
+    "Bondage": {
+        "zbfBitchOnTheGroundStruggling_Rope": "zazgirlstrugglingontheground_loop",
+        "zbfBitchOnTheGroundStruggling_Rug": "zazgirlstrugglingontheground_loop"
+    },
+
+    "Captive": {
+        "zbfCaptiveBoundOnKneesMarker": "zazboundknees_loop"
+    },
+
+    "Buried": {
+        "zbfBuriedIntoTheGroundWithShovelsAround": "zazburied_loop"
+    },
+
+    "Display - Front": {
+        "zbfChainedUnderTheGallow01": "zazapchains01_loop"
+    },
+
+    "Wheels": {
+        "zbfCircusWheel": "xcircuswheelspin"
+    },
+
+    "Crosses": {
+        "zbfCruxHeavy": "zazapfcrh01a",
+        "zbfCruxHeavy_DarkWood": "zazapfcrh01a",
+        "zbfCruxHeavy_MidWood": "zazapfcrh01a",
+        "zbfCruxHeavy_StdWood": "zazapfcrh01a",
+        "zbfWcnCrucifiedCruxMkII": "wnc_crucified_loop",
+        "zbfWcnCrucifiedCruxMkII_DarkCoarseWood": "wnc_crucified_loop",
+        "zbfWcnCrucifiedCruxMkII_DarkWood": "wnc_crucified_loop",
+        "zbfWcnCrucifiedCruxMkII_FarmWood": "wnc_crucified_loop",
+        "zbfWcnCrucifiedCruxMkII_LitePlainWood": "wnc_crucified_loop",
+        "zbfWcnCrucifiedCruxMkII_MidWood": "wnc_crucified_loop",
+        "zbfWcnCrucifiedCruxMkII_StdWood": "wnc_crucified_loop"
+    },
+
+    "Impalers": {
+        "zbfWcnImpaled": "wnc_impaled_loop",
+        "zbfWcnImpaled_Copper": "wnc_impaled_loop",
+        "zbfWcnImpaled_Gold": "wnc_impaled_loop",
+        "zbfWcnImpaled_GreenRust": "wnc_impaled_loop",
+        "zbfWcnImpaled_GreyRust": "wnc_impaled_loop",
+        "zbfWcnImpaled_IntensiveRust": "wnc_impaled_loop",
+        "zbfWcnImpaled_RedRust": "wnc_impaled_loop",
+        "zbfWcnImpaled_ShinyMetal": "wnc_impaled_loop"
+    }
+}
