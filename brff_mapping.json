@@ -34,6 +34,22 @@
         "zbfWcnCrucifiedCruxMkII_StdWood": "wnc_crucified_loop"
     },
 
+    "Dead": {
+        "zbfGallowPoleBrown": "zazgallow_dead",
+        "zbfGallowPoleFreeStandingOutside": "zazgallow_dead",
+        "zbfGallowPoleFreeStandingOutsideFarmHouseBrown": "zazgallow_dead",
+        "zbfGallowPoleFreeStandingOutsideFarmHouseGrey": "zazgallow_dead",
+        "zbfGallowPoleGreen": "zazgallow_dead",
+        "zbfGallowPoleWallMounted": "zazgallow_dead",
+        "zbfGallowPoleWallMountedBrown": "zazgallow_dead",
+        "zbfGallowPoleWallMountedGreen": "zazgallow_dead"
+    },
+
+    "Fire": {
+        "zbfPyre": "zazpyre_loop",
+        "zbfPyreSetTheFire": "zazfireupthefire_loop"
+    },
+
     "Impalers": {
         "zbfWcnImpaled": "wnc_impaled_loop",
         "zbfWcnImpaled_Copper": "wnc_impaled_loop",
