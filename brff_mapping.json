@@ -17,7 +17,9 @@
     },
 
     "Wheels": {
-        "zbfCircusWheel": "xcircuswheelspin"
+        "zbfCircusWheel": "xcircuswheelspin",
+        "zbfWaterWheelIndoor": "xzazwaterbondagewheelindoorspin",
+        "zbfWaterWheelMini": "xwaterwheelminispin"
     },
 
     "Crosses": {
@@ -32,6 +34,13 @@
         "zbfWcnCrucifiedCruxMkII_LitePlainWood": "wnc_crucified_loop",
         "zbfWcnCrucifiedCruxMkII_MidWood": "wnc_crucified_loop",
         "zbfWcnCrucifiedCruxMkII_StdWood": "wnc_crucified_loop"
+    },
+
+    "Coffins": {
+        "glassCoffinShy": "xcoffinglassshy",
+        "glassCoffinSleep1": "xcoffinglasssleeping",
+        "glassCoffinSleep2": "xcoffinglasssleeping2",
+        "glassCoffinStruggle": "xcoffinglassstruggle"
     },
 
     "Dead": {
