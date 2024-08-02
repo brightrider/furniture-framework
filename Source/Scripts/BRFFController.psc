@@ -90,10 +90,26 @@ Function Add(Actor ref, ObjectReference furn)
     JMap.setFlt(record, "assistance", ref.GetAV("Assistance"))
     JMap.setInt(record, "ignoreFriendlyHits", ref.IsIgnoringFriendlyHits() as Int)
     JFormMap.setObj(ACTORS, ref, record)
+
+    Int handle = ModEvent.Create("BRFF_Add")
+    If handle
+        ModEvent.PushForm(handle, ref)
+        ModEvent.PushForm(handle, furn)
+        ModEvent.Send(handle)
+    EndIf
 EndFunction
 
 Function Remove(Actor ref)
-    JMap.setInt(JFormMap.getObj(ACTORS, ref), "toRemove", 1)
+    Int record = JFormMap.getObj(ACTORS, ref)
+
+    Int handle = ModEvent.Create("BRFF_Remove")
+    If handle
+        ModEvent.PushForm(handle, ref)
+        ModEvent.PushForm(handle, JMap.getForm(record, "furniture"))
+        ModEvent.Send(handle)
+    EndIf
+
+    JMap.setInt(record, "toRemove", 1)
 EndFunction
 
 Function RemoveImpl(Actor ref)
