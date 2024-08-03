@@ -68,5 +68,11 @@
         "zbfWcnImpaled_IntensiveRust": "wnc_impaled_loop",
         "zbfWcnImpaled_RedRust": "wnc_impaled_loop",
         "zbfWcnImpaled_ShinyMetal": "wnc_impaled_loop"
+    },
+
+    "Work": {
+        "BRFF_MineOreFloor": "idlepickaxefloorenterinstant",
+        "BRFF_ChopWood": "idlewoodchopenterinstant",
+        "BRFF_Farm": "idlehoe"
     }
 }
