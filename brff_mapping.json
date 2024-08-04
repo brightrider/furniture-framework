@@ -56,7 +56,8 @@
 
     "Fire": {
         "zbfPyre": "zazpyre_loop",
-        "zbfPyreSetTheFire": "zazfireupthefire_loop"
+        "zbfPyreSetTheFire": "zazfireupthefire_loop",
+        "Campfire01Burning": ""
     },
 
     "Impalers": {
@@ -72,7 +73,6 @@
 
     "Work": {
         "BRFF_MineOreFloor": "idlepickaxefloorenterinstant",
-        "BRFF_ChopWood": "idlewoodchopenterinstant",
         "BRFF_Farm": "idlehoe"
     }
 }
