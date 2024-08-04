@@ -89,6 +89,7 @@ Function Add(Actor ref, ObjectReference furn)
     JMap.setFlt(record, "confidence", ref.GetAV("Confidence"))
     JMap.setFlt(record, "assistance", ref.GetAV("Assistance"))
     JMap.setInt(record, "ignoreFriendlyHits", ref.IsIgnoringFriendlyHits() as Int)
+    JMap.setInt(record, "collisionLayer", BRFFSKSELibrary.GetCollisionLayer(furn))
     JFormMap.setObj(ACTORS, ref, record)
 
     Int handle = ModEvent.Create("BRFF_Add")
@@ -127,7 +128,7 @@ Function RemoveImpl(Actor ref)
     ref.EvaluatePackage()
     Debug.SendAnimationEvent(ref, "IdleForceDefaultState")
     ObjectReference furn = JMap.getForm(record, "furniture") as ObjectReference
-    PO3_SKSEFunctions.SetCollisionLayer(furn, "", 1)
+    PO3_SKSEFunctions.SetCollisionLayer(furn, "", JMap.getInt(record, "collisionLayer"))
     furn.BlockActivation(False)
     JFormMap.removeKey(ACTORS, ref)
 EndFunction
