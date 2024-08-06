@@ -13,7 +13,32 @@
     },
 
     "Display - Front": {
-        "zbfChainedUnderTheGallow01": "zazapchains01_loop"
+        "zbfChainedUnderTheGallow01": "zazapchains01_loop",
+        "zbfRestraintPoleShackles01": "zazrspp01_loop",
+        "zbfRestraintPoleShackles01_DarkWood": "zazrspp01_loop",
+        "zbfRestraintPoleShackles01_MidWood": "zazrspp01_loop",
+        "zbfRestraintPoleShackles01_StdWood": "zazrspp01_loop",
+        "zbfRestraintWallShackles01": "zazrspp01_loop"
+    },
+
+    "Display - UprightDown": {
+        "zbfPoleBondageUprightDownHanging": "zazuprightdown_loop",
+        "zbfPoleBondageUprightDownHanging_DarkWoor": "zazuprightdown_loop",
+        "zbfPoleBondageUprightDownHanging_MidWoor": "zazuprightdown_loop",
+        "zbfPoleBondageUprightDownHanging_StdWoor": "zazuprightdown_loop",
+        "zbfPoleBondageUprightDownHangingMarker": "zazuprightdown_loop"
+    },
+
+    "Pole Dance": {
+        "zbfPoleDance_DarkCoarseWood": "zazpoledance_loop",
+        "zbfPoleDance_DarkWood": "zazpoledance_loop",
+        "zbfPoleDance_FarmhouseStyle": "zazpoledance_loop",
+        "zbfPoleDance_FullMetal": "zazpoledance_loop",
+        "zbfPoleDance_LiteCoarseWood": "zazpoledance_loop",
+        "zbfPoleDance_LitePlainWood": "zazpoledance_loop",
+        "zbfPoleDance_MidWood": "zazpoledance_loop",
+        "zbfPoleDance_ShipWoodStyle": "zazpoledance_loop",
+        "zbfPoleDance_StdWood": "zazpoledance_loop"
     },
 
     "Wheels": {
@@ -60,6 +85,18 @@
         "Campfire01Burning": ""
     },
 
+    "Shackles": {
+        "zbfImpShackleWallHeadDown": "zazshacklewallheaddownrigid_loop",
+        "zbfImpShackleWallHeadDown_DarkSteel": "zazshacklewallheaddownrigid_loop",
+        "zbfImpShackleWallHeadDown_GreenYellowRust": "zazshacklewallheaddownrigid_loop",
+        "zbfImpShackleWallRigid": "zazshacklewallrigid_loop",
+        "zbfImpShackleWallRigid_DarkSteel": "zazshacklewallrigid_loop",
+        "zbfImpShackleWallRigid_GreenYellowRust": "zazshacklewallrigid_loop",
+        "zbfImpShackleWallStrict": "zazapstrictwallshacklescustom_loop",
+        "zbfImpShackleWallStrict_DarkSteel": "zazapstrictwallshacklescustom_loop",
+        "zbfImpShackleWallStrict_GreenYellowRust": "zazapstrictwallshacklescustom_loop"
+    },
+
     "Impalers": {
         "zbfWcnImpaled": "wnc_impaled_loop",
         "zbfWcnImpaled_Copper": "wnc_impaled_loop",
@@ -74,5 +111,13 @@
     "Work": {
         "BRFF_MineOreFloor": "idlepickaxefloorenterinstant",
         "BRFF_Farm": "idlehoe"
+    },
+
+    "Whipping": {
+        "zbfWhippingMarker": "zazwhipping_loop"
+    },
+
+    "Vampire": {
+        "zbfVampireSupply": "xVampireSupplyHang1"
     }
 }
