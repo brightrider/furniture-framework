@@ -1,6 +1,9 @@
 Scriptname BRFFController extends Quest
 
+Import NetImmerse
+
 Spell Property ActorSpell Auto
+Armor Property ExecutionerRing Auto
 Package Property DoNothing Auto
 Faction Property FFFaction Auto
 
@@ -113,6 +116,31 @@ Function Remove(Actor ref)
     JMap.setInt(record, "toRemove", 1)
 EndFunction
 
+Function Kill(Actor ref)
+    Int record = JFormMap.getObj(ACTORS, ref)
+    ObjectReference dummyL = JMap.getForm(record, "dummyL") as ObjectReference
+    ObjectReference dummyR = JMap.getForm(record, "dummyR") as ObjectReference
+    Form dummy = Game.GetForm(0xD19BA)
+    If ! dummyL
+        Float lHandPosX = GetNodeWorldPositionX(ref, "NPC L Hand [LHnd]", firstPerson=False)
+        Float lHandPosY = GetNodeWorldPositionY(ref, "NPC L Hand [LHnd]", firstPerson=False)
+        Float lHandPosZ = GetNodeWorldPositionZ(ref, "NPC L Hand [LHnd]", firstPerson=False)
+        dummyL = ref.PlaceAtMe(dummy, 1, abForcePersist=True)
+        JMap.setForm(record, "dummyL", dummyL)
+        dummyL.SetPosition(lHandPosX, lHandPosY, lHandPosZ)
+    EndIf
+    If ! dummyR
+        Float rHandPosX = GetNodeWorldPositionX(ref, "NPC R Hand [RHnd]", firstPerson=False)
+        Float rHandPosY = GetNodeWorldPositionY(ref, "NPC R Hand [RHnd]", firstPerson=False)
+        Float rHandPosZ = GetNodeWorldPositionZ(ref, "NPC R Hand [RHnd]", firstPerson=False)
+        dummyR = ref.PlaceAtMe(dummy, 1, abForcePersist=True)
+        JMap.setForm(record, "dummyR", dummyR)
+        dummyR.SetPosition(rHandPosX, rHandPosY, rHandPosZ)
+    EndIf
+    ref.Kill()
+    SetConstraints(ref)
+EndFunction
+
 Function RemoveImpl(Actor ref)
     Int record = JFormMap.getObj(ACTORS, ref)
     ActorUtil.RemovePackageOverride(ref, DoNothing)
@@ -122,11 +150,19 @@ Function RemoveImpl(Actor ref)
     ref.SetAV("Confidence", JMap.getFlt(record, "confidence"))
     ref.SetAV("Assistance", JMap.getFlt(record, "assistance"))
     ref.IgnoreFriendlyHits(JMap.getInt(record, "ignoreFriendlyHits") as Bool)
-    ref.ForceAV("Health", JMap.getFlt(record, "health"))
     ref.SetRestrained(False)
     ref.SetDontMove(False)
-    ref.EvaluatePackage()
-    Debug.SendAnimationEvent(ref, "IdleForceDefaultState")
+    ObjectReference dummyL = JMap.getForm(record, "dummyL") as ObjectReference
+    ObjectReference dummyR = JMap.getForm(record, "dummyR") as ObjectReference
+    Game.RemoveHavokConstraints(ref, "NPC L Hand [LHnd]", dummyL, "AttachDummy")
+    Game.RemoveHavokConstraints(ref, "NPC R Hand [RHnd]", dummyR, "AttachDummy")
+    dummyL.Delete()
+    dummyR.Delete()
+    If ! ref.IsDead()
+        ref.ForceAV("Health", JMap.getFlt(record, "health"))
+        ref.EvaluatePackage()
+        Debug.SendAnimationEvent(ref, "IdleForceDefaultState")
+    EndIf
     ObjectReference furn = JMap.getForm(record, "furniture") as ObjectReference
     PO3_SKSEFunctions.SetCollisionLayer(furn, "", JMap.getInt(record, "collisionLayer"))
     furn.BlockActivation(False)
@@ -135,7 +171,11 @@ EndFunction
 
 Function ConfigureActor(Actor ref, bool shouldAddPackage=True)
     If ref.IsDead()
-        ref.Resurrect()
+        SetConstraints(ref)
+        ref.IgnoreFriendlyHits(False)
+        ref.SetRestrained(False)
+        ref.SetDontMove(False)
+        Return
     EndIf
     If shouldAddPackage
         ActorUtil.AddPackageOverride(ref, DoNothing, 100)
@@ -157,7 +197,9 @@ Function ConfigureActor(Actor ref, bool shouldAddPackage=True)
 EndFunction
 
 Function ConfigureFurniture(ObjectReference furn)
-    furn.SetAngle(0, 0, Mod(furn.GetAngleZ(), 360))
+    If furn.GetAngleX() != 0 || furn.GetAngleY() != 0
+        furn.SetAngle(0, 0, Mod(furn.GetAngleZ(), 360))
+    EndIf
     If BRFFSKSELibrary.GetCollisionLayer(furn) != 15
         PO3_SKSEFunctions.SetCollisionLayer(furn, "", 15)
     EndIf
@@ -201,11 +243,34 @@ Function HandleActor(Actor ref)
             ConfigureActor(ref, False)
         EndIf
     EndIf
-    Debug.SendAnimationEvent(ref, JMap.getStr(MAPPING, PO3_SKSEFunctions.GetFormEditorID(furn.GetBaseObject())))
+    If ! ref.IsDead()
+        Debug.SendAnimationEvent(ref, JMap.getStr(MAPPING, PO3_SKSEFunctions.GetFormEditorID(furn.GetBaseObject())))
+    EndIf
     Utility.Wait(1)
 EndFunction
 
+Function HandleActorHit(Actor ref, Actor attacker)
+    If attacker.IsEquipped(ExecutionerRing)
+        Kill(ref)
+    EndIf
+EndFunction
+
+Function SetConstraints(Actor ref)
+    Int record = JFormMap.getObj(ACTORS, ref)
+    ObjectReference dummyL = JMap.getForm(record, "dummyL") as ObjectReference
+    ObjectReference dummyR = JMap.getForm(record, "dummyR") as ObjectReference
+    If dummyL && dummyR
+        Game.AddHavokBallAndSocketConstraint(ref, "NPC L Hand [LHnd]", dummyL, "AttachDummy")
+        Game.AddHavokBallAndSocketConstraint(ref, "NPC R Hand [RHnd]", dummyR, "AttachDummy")
+        ref.ApplyHavokImpulse(1, 1, 1, 1)
+    EndIf
+EndFunction
+
 Bool Function TryPosition(Actor ref, ObjectReference furn)
+    If ref.IsDead()
+        Return False
+    EndIf
+
     Int c = 0
     While c < 3
         Int aX = Math.Floor(ref.X)
