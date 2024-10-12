@@ -116,28 +116,16 @@ Function Remove(Actor ref)
     JMap.setInt(record, "toRemove", 1)
 EndFunction
 
-Function Kill(Actor ref)
-    Int record = JFormMap.getObj(ACTORS, ref)
-    ObjectReference dummyL = JMap.getForm(record, "dummyL") as ObjectReference
-    ObjectReference dummyR = JMap.getForm(record, "dummyR") as ObjectReference
-    Form dummy = Game.GetForm(0xD19BA)
-    If ! dummyL
-        Float lHandPosX = GetNodeWorldPositionX(ref, "NPC L Hand [LHnd]", firstPerson=False)
-        Float lHandPosY = GetNodeWorldPositionY(ref, "NPC L Hand [LHnd]", firstPerson=False)
-        Float lHandPosZ = GetNodeWorldPositionZ(ref, "NPC L Hand [LHnd]", firstPerson=False)
-        dummyL = ref.PlaceAtMe(dummy, 1, abForcePersist=True)
-        JMap.setForm(record, "dummyL", dummyL)
-        dummyL.SetPosition(lHandPosX, lHandPosY, lHandPosZ)
-    EndIf
-    If ! dummyR
-        Float rHandPosX = GetNodeWorldPositionX(ref, "NPC R Hand [RHnd]", firstPerson=False)
-        Float rHandPosY = GetNodeWorldPositionY(ref, "NPC R Hand [RHnd]", firstPerson=False)
-        Float rHandPosZ = GetNodeWorldPositionZ(ref, "NPC R Hand [RHnd]", firstPerson=False)
-        dummyR = ref.PlaceAtMe(dummy, 1, abForcePersist=True)
-        JMap.setForm(record, "dummyR", dummyR)
-        dummyR.SetPosition(rHandPosX, rHandPosY, rHandPosZ)
-    EndIf
-    ref.Kill()
+Function Kill(Actor ref, Actor killer=None)
+    String[] nodes = GetConstraintStrings(ref)
+    Int i = 0
+    While i < nodes.Length
+        If nodes[i]
+            CreateConstraintDummy(ref, nodes[i])
+        EndIf
+        i += 1
+    EndWhile
+    ref.Kill(killer)
     SetConstraints(ref)
 EndFunction
 
@@ -152,12 +140,16 @@ Function RemoveImpl(Actor ref)
     ref.IgnoreFriendlyHits(JMap.getInt(record, "ignoreFriendlyHits") as Bool)
     ref.SetRestrained(False)
     ref.SetDontMove(False)
-    ObjectReference dummyL = JMap.getForm(record, "dummyL") as ObjectReference
-    ObjectReference dummyR = JMap.getForm(record, "dummyR") as ObjectReference
-    Game.RemoveHavokConstraints(ref, "NPC L Hand [LHnd]", dummyL, "AttachDummy")
-    Game.RemoveHavokConstraints(ref, "NPC R Hand [RHnd]", dummyR, "AttachDummy")
-    dummyL.Delete()
-    dummyR.Delete()
+    String[] nodes = GetConstraintStrings(ref)
+    Int i = 0
+    While i < nodes.Length
+        If nodes[i]
+            ObjectReference dummy = JMap.getForm(record, nodes[i]) as ObjectReference
+            Game.RemoveHavokConstraints(ref, nodes[i], dummy, "AttachDummy")
+            dummy.Delete()
+        EndIf
+        i += 1
+    EndWhile
     If ! ref.IsDead()
         ref.ForceAV("Health", JMap.getFlt(record, "health"))
         ref.EvaluatePackage()
@@ -219,6 +211,32 @@ Function Init()
     JValue.retain(MAPPING)
 EndFunction
 
+String[] Function GetConstraintStrings(Actor ref)
+    String[] result = new String[8]
+    Int record = JFormMap.getObj(ACTORS, ref)
+    ObjectReference furn = JMap.getForm(record, "furniture") as ObjectReference
+    String mask = JMap.getStr(JMap.getObj(MAPPING, PO3_SKSEFunctions.GetFormEditorID(furn.GetBaseObject())), "constraints")
+    If StringUtil.Find(mask, "N") != -1
+        result[0] = "NPC Head [Head]"
+    EndIf
+    If StringUtil.Find(mask, "H") != -1
+        result[1] = "NPC L Hand [LHnd]"
+        result[2] = "NPC R Hand [RHnd]"
+    EndIf
+    If StringUtil.Find(mask, "L") != -1
+        result[3] = "NPC L Foot [Lft ]"
+        result[4] = "NPC R Foot [Rft ]"
+    EndIf
+    If StringUtil.Find(mask, "A") != -1
+        result[5] = "NPC L ForearmTwist2 [LLt2]"
+        result[6] = "NPC R ForearmTwist2 [RLt2]"
+    EndIf
+    If StringUtil.Find(mask, "S") != -1
+        result[7] = "NPC Spine2 [Spn2]"
+    EndIf
+    Return result
+EndFunction
+
 Function HandleActor(Actor ref)
     Int record = JFormMap.getObj(ACTORS, ref)
 
@@ -244,29 +262,74 @@ Function HandleActor(Actor ref)
         EndIf
     EndIf
     If ! ref.IsDead()
-        Debug.SendAnimationEvent(ref, JMap.getStr(MAPPING, PO3_SKSEFunctions.GetFormEditorID(furn.GetBaseObject())))
+        Debug.SendAnimationEvent(ref, JMap.getStr(JMap.getObj(MAPPING,\
+            PO3_SKSEFunctions.GetFormEditorID(furn.GetBaseObject())), "animEvent"))
     EndIf
     Utility.Wait(1)
 EndFunction
 
 Function HandleActorHit(Actor ref, Actor attacker)
     If attacker.IsEquipped(ExecutionerRing)
-        Kill(ref)
+        Kill(ref, attacker)
     EndIf
 EndFunction
 
 Function SetConstraints(Actor ref)
     Int record = JFormMap.getObj(ACTORS, ref)
-    ObjectReference dummyL = JMap.getForm(record, "dummyL") as ObjectReference
-    ObjectReference dummyR = JMap.getForm(record, "dummyR") as ObjectReference
-    If dummyL && dummyR
-        Game.AddHavokBallAndSocketConstraint(ref, "NPC L Hand [LHnd]", dummyL, "AttachDummy")
-        Game.AddHavokBallAndSocketConstraint(ref, "NPC R Hand [RHnd]", dummyR, "AttachDummy")
+    String[] nodes = GetConstraintStrings(ref)
+    Int i = 0
+    Bool shouldApplyImpulse = False
+    While i < nodes.Length
+        If nodes[i]
+            ObjectReference dummy = JMap.getForm(record, nodes[i]) as ObjectReference
+            If dummy
+                shouldApplyImpulse = True
+                Game.AddHavokBallAndSocketConstraint(ref, nodes[i], dummy, "AttachDummy")
+            EndIf
+        EndIf
+        i += 1
+    EndWhile
+    If shouldApplyImpulse
         ref.ApplyHavokImpulse(1, 1, 1, 1)
     EndIf
 EndFunction
 
+Function CreateConstraintDummy(Actor ref, String node)
+    Int record = JFormMap.getObj(ACTORS, ref)
+    ObjectReference dummy = JMap.getForm(record, node) as ObjectReference
+    If ! dummy
+        Float posX = GetNodeWorldPositionX(ref, node, firstPerson=False)
+        Float posY = GetNodeWorldPositionY(ref, node, firstPerson=False)
+        Float posZ = GetNodeWorldPositionZ(ref, node, firstPerson=False)
+        dummy = ref.PlaceAtMe(Game.GetForm(0xD19BA), 1, abForcePersist=True)
+        JMap.setForm(record, node, dummy)
+        ObjectReference furn = JMap.getForm(record, "furniture") as ObjectReference
+        JMap.setFlt(record, node + "relX", posX - furn.X)
+        JMap.setFlt(record, node + "relY", posY - furn.Y)
+        JMap.setFlt(record, node + "relZ", posZ - furn.Z)
+        dummy.SetPosition(posX, posY, posZ)
+    EndIf
+EndFunction
+
 Bool Function TryPosition(Actor ref, ObjectReference furn)
+    Int record = JFormMap.getObj(ACTORS, ref)
+    String[] nodes = GetConstraintStrings(ref)
+    Int i = 0
+    While i < nodes.Length
+        If nodes[i]
+            ObjectReference dummy = JMap.getForm(record, nodes[i]) as ObjectReference
+            If dummy
+                Float relX = JMap.getFlt(record, nodes[i] + "relX")
+                Float relY = JMap.getFlt(record, nodes[i] + "relY")
+                Float relZ = JMap.getFlt(record, nodes[i] + "relZ")
+                If furn.X + relX != dummy.X || furn.Y + relY != dummy.Y || furn.Z + relZ != dummy.Z
+                    dummy.MoveTo(furn, relX, relY, relZ)
+                EndIf
+            EndIf
+        EndIf
+        i += 1
+    EndWhile
+
     If ref.IsDead()
         Return False
     EndIf

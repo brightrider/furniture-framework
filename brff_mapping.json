@@ -1,123 +1,330 @@
 {
     "Bondage": {
-        "zbfBitchOnTheGroundStruggling_Rope": "zazgirlstrugglingontheground_loop",
-        "zbfBitchOnTheGroundStruggling_Rug": "zazgirlstrugglingontheground_loop"
+        "zbfBitchOnTheGroundStruggling_Rope": {
+            "animEvent": "zazgirlstrugglingontheground_loop",
+            "constraints": ""
+        },
+        "zbfBitchOnTheGroundStruggling_Rug": {
+            "animEvent": "zazgirlstrugglingontheground_loop",
+            "constraints": ""
+        }
     },
-
     "Captive": {
-        "zbfCaptiveBoundOnKneesMarker": "zazboundknees_loop"
+        "zbfCaptiveBoundOnKneesMarker": {
+            "animEvent": "zazboundknees_loop",
+            "constraints": ""
+        }
     },
-
     "Buried": {
-        "zbfBuriedIntoTheGroundWithShovelsAround": "zazburied_loop"
+        "zbfBuriedIntoTheGroundWithShovelsAround": {
+            "animEvent": "zazburied_loop",
+            "constraints": ""
+        }
     },
-
     "Display - Front": {
-        "zbfChainedUnderTheGallow01": "zazapchains01_loop",
-        "zbfRestraintPoleShackles01": "zazrspp01_loop",
-        "zbfRestraintPoleShackles01_DarkWood": "zazrspp01_loop",
-        "zbfRestraintPoleShackles01_MidWood": "zazrspp01_loop",
-        "zbfRestraintPoleShackles01_StdWood": "zazrspp01_loop",
-        "zbfRestraintWallShackles01": "zazrspp01_loop"
+        "zbfChainedUnderTheGallow01": {
+            "animEvent": "zazapchains01_loop",
+            "constraints": "H"
+        },
+        "zbfRestraintPoleShackles01": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NH"
+        },
+        "zbfRestraintPoleShackles01_DarkWood": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NH"
+        },
+        "zbfRestraintPoleShackles01_MidWood": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NH"
+        },
+        "zbfRestraintPoleShackles01_StdWood": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NH"
+        },
+        "zbfRestraintWallShackles01": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NHL"
+        }
     },
-
     "Display - UprightDown": {
-        "zbfPoleBondageUprightDownHanging": "zazuprightdown_loop",
-        "zbfPoleBondageUprightDownHanging_DarkWoor": "zazuprightdown_loop",
-        "zbfPoleBondageUprightDownHanging_MidWoor": "zazuprightdown_loop",
-        "zbfPoleBondageUprightDownHanging_StdWoor": "zazuprightdown_loop",
-        "zbfPoleBondageUprightDownHangingMarker": "zazuprightdown_loop"
+        "zbfPoleBondageUprightDownHanging": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L"
+        },
+        "zbfPoleBondageUprightDownHanging_DarkWoor": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L"
+        },
+        "zbfPoleBondageUprightDownHanging_MidWoor": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L"
+        },
+        "zbfPoleBondageUprightDownHanging_StdWoor": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L"
+        },
+        "zbfPoleBondageUprightDownHangingMarker": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L"
+        }
     },
-
     "Pole Dance": {
-        "zbfPoleDance_DarkCoarseWood": "zazpoledance_loop",
-        "zbfPoleDance_DarkWood": "zazpoledance_loop",
-        "zbfPoleDance_FarmhouseStyle": "zazpoledance_loop",
-        "zbfPoleDance_FullMetal": "zazpoledance_loop",
-        "zbfPoleDance_LiteCoarseWood": "zazpoledance_loop",
-        "zbfPoleDance_LitePlainWood": "zazpoledance_loop",
-        "zbfPoleDance_MidWood": "zazpoledance_loop",
-        "zbfPoleDance_ShipWoodStyle": "zazpoledance_loop",
-        "zbfPoleDance_StdWood": "zazpoledance_loop"
+        "zbfPoleDance_DarkCoarseWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        },
+        "zbfPoleDance_DarkWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        },
+        "zbfPoleDance_FarmhouseStyle": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        },
+        "zbfPoleDance_FullMetal": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        },
+        "zbfPoleDance_LiteCoarseWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        },
+        "zbfPoleDance_LitePlainWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        },
+        "zbfPoleDance_MidWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        },
+        "zbfPoleDance_ShipWoodStyle": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        },
+        "zbfPoleDance_StdWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": ""
+        }
     },
-
     "Wheels": {
-        "zbfCircusWheel": "xcircuswheelspin",
-        "zbfWaterWheelIndoor": "xzazwaterbondagewheelindoorspin",
-        "zbfWaterWheelMini": "xwaterwheelminispin"
+        "zbfCircusWheel": {
+            "animEvent": "xcircuswheelspin",
+            "constraints": ""
+        },
+        "zbfWaterWheelIndoor": {
+            "animEvent": "xzazwaterbondagewheelindoorspin",
+            "constraints": ""
+        },
+        "zbfWaterWheelMini": {
+            "animEvent": "xwaterwheelminispin",
+            "constraints": ""
+        }
     },
-
     "Crosses": {
-        "zbfCruxHeavy": "zazapfcrh01a",
-        "zbfCruxHeavy_DarkWood": "zazapfcrh01a",
-        "zbfCruxHeavy_MidWood": "zazapfcrh01a",
-        "zbfCruxHeavy_StdWood": "zazapfcrh01a",
-        "zbfWcnCrucifiedCruxMkII": "wnc_crucified_loop",
-        "zbfWcnCrucifiedCruxMkII_DarkCoarseWood": "wnc_crucified_loop",
-        "zbfWcnCrucifiedCruxMkII_DarkWood": "wnc_crucified_loop",
-        "zbfWcnCrucifiedCruxMkII_FarmWood": "wnc_crucified_loop",
-        "zbfWcnCrucifiedCruxMkII_LitePlainWood": "wnc_crucified_loop",
-        "zbfWcnCrucifiedCruxMkII_MidWood": "wnc_crucified_loop",
-        "zbfWcnCrucifiedCruxMkII_StdWood": "wnc_crucified_loop"
+        "zbfCruxHeavy": {
+            "animEvent": "zazapfcrh01a",
+            "constraints": "HL"
+        },
+        "zbfCruxHeavy_DarkWood": {
+            "animEvent": "zazapfcrh01a",
+            "constraints": "HL"
+        },
+        "zbfCruxHeavy_MidWood": {
+            "animEvent": "zazapfcrh01a",
+            "constraints": "HL"
+        },
+        "zbfCruxHeavy_StdWood": {
+            "animEvent": "zazapfcrh01a",
+            "constraints": "HL"
+        },
+        "zbfWcnCrucifiedCruxMkII": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL"
+        },
+        "zbfWcnCrucifiedCruxMkII_DarkCoarseWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL"
+        },
+        "zbfWcnCrucifiedCruxMkII_DarkWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL"
+        },
+        "zbfWcnCrucifiedCruxMkII_FarmWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL"
+        },
+        "zbfWcnCrucifiedCruxMkII_LitePlainWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL"
+        },
+        "zbfWcnCrucifiedCruxMkII_MidWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL"
+        },
+        "zbfWcnCrucifiedCruxMkII_StdWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL"
+        }
     },
-
     "Coffins": {
-        "glassCoffinShy": "xcoffinglassshy",
-        "glassCoffinSleep1": "xcoffinglasssleeping",
-        "glassCoffinSleep2": "xcoffinglasssleeping2",
-        "glassCoffinStruggle": "xcoffinglassstruggle"
+        "glassCoffinShy": {
+            "animEvent": "xcoffinglassshy",
+            "constraints": ""
+        },
+        "glassCoffinSleep1": {
+            "animEvent": "xcoffinglasssleeping",
+            "constraints": ""
+        },
+        "glassCoffinSleep2": {
+            "animEvent": "xcoffinglasssleeping2",
+            "constraints": ""
+        },
+        "glassCoffinStruggle": {
+            "animEvent": "xcoffinglassstruggle",
+            "constraints": ""
+        }
     },
-
     "Dead": {
-        "zbfGallowPoleBrown": "zazgallow_dead",
-        "zbfGallowPoleFreeStandingOutside": "zazgallow_dead",
-        "zbfGallowPoleFreeStandingOutsideFarmHouseBrown": "zazgallow_dead",
-        "zbfGallowPoleFreeStandingOutsideFarmHouseGrey": "zazgallow_dead",
-        "zbfGallowPoleGreen": "zazgallow_dead",
-        "zbfGallowPoleWallMounted": "zazgallow_dead",
-        "zbfGallowPoleWallMountedBrown": "zazgallow_dead",
-        "zbfGallowPoleWallMountedGreen": "zazgallow_dead"
+        "zbfGallowPoleBrown": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "NH"
+        },
+        "zbfGallowPoleFreeStandingOutside": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "NH"
+        },
+        "zbfGallowPoleFreeStandingOutsideFarmHouseBrown": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "NH"
+        },
+        "zbfGallowPoleFreeStandingOutsideFarmHouseGrey": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "NH"
+        },
+        "zbfGallowPoleGreen": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "NH"
+        },
+        "zbfGallowPoleWallMounted": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "NH"
+        },
+        "zbfGallowPoleWallMountedBrown": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "NH"
+        },
+        "zbfGallowPoleWallMountedGreen": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "NH"
+        }
     },
-
     "Fire": {
-        "zbfPyre": "zazpyre_loop",
-        "zbfPyreSetTheFire": "zazfireupthefire_loop",
-        "Campfire01Burning": ""
+        "zbfPyre": {
+            "animEvent": "zazpyre_loop",
+            "constraints": "A"
+        },
+        "zbfPyreSetTheFire": {
+            "animEvent": "zazfireupthefire_loop",
+            "constraints": ""
+        },
+        "Campfire01Burning": {
+            "animEvent": "",
+            "constraints": ""
+        }
     },
-
     "Shackles": {
-        "zbfImpShackleWallHeadDown": "zazshacklewallheaddownrigid_loop",
-        "zbfImpShackleWallHeadDown_DarkSteel": "zazshacklewallheaddownrigid_loop",
-        "zbfImpShackleWallHeadDown_GreenYellowRust": "zazshacklewallheaddownrigid_loop",
-        "zbfImpShackleWallRigid": "zazshacklewallrigid_loop",
-        "zbfImpShackleWallRigid_DarkSteel": "zazshacklewallrigid_loop",
-        "zbfImpShackleWallRigid_GreenYellowRust": "zazshacklewallrigid_loop",
-        "zbfImpShackleWallStrict": "zazapstrictwallshacklescustom_loop",
-        "zbfImpShackleWallStrict_DarkSteel": "zazapstrictwallshacklescustom_loop",
-        "zbfImpShackleWallStrict_GreenYellowRust": "zazapstrictwallshacklescustom_loop"
+        "zbfImpShackleWallHeadDown": {
+            "animEvent": "zazshacklewallheaddownrigid_loop",
+            "constraints": "L"
+        },
+        "zbfImpShackleWallHeadDown_DarkSteel": {
+            "animEvent": "zazshacklewallheaddownrigid_loop",
+            "constraints": "L"
+        },
+        "zbfImpShackleWallHeadDown_GreenYellowRust": {
+            "animEvent": "zazshacklewallheaddownrigid_loop",
+            "constraints": "L"
+        },
+        "zbfImpShackleWallRigid": {
+            "animEvent": "zazshacklewallrigid_loop",
+            "constraints": "H"
+        },
+        "zbfImpShackleWallRigid_DarkSteel": {
+            "animEvent": "zazshacklewallrigid_loop",
+            "constraints": "H"
+        },
+        "zbfImpShackleWallRigid_GreenYellowRust": {
+            "animEvent": "zazshacklewallrigid_loop",
+            "constraints": "H"
+        },
+        "zbfImpShackleWallStrict": {
+            "animEvent": "zazapstrictwallshacklescustom_loop",
+            "constraints": "NHL"
+        },
+        "zbfImpShackleWallStrict_DarkSteel": {
+            "animEvent": "zazapstrictwallshacklescustom_loop",
+            "constraints": "NHL"
+        },
+        "zbfImpShackleWallStrict_GreenYellowRust": {
+            "animEvent": "zazapstrictwallshacklescustom_loop",
+            "constraints": "NHL"
+        }
     },
-
     "Impalers": {
-        "zbfWcnImpaled": "wnc_impaled_loop",
-        "zbfWcnImpaled_Copper": "wnc_impaled_loop",
-        "zbfWcnImpaled_Gold": "wnc_impaled_loop",
-        "zbfWcnImpaled_GreenRust": "wnc_impaled_loop",
-        "zbfWcnImpaled_GreyRust": "wnc_impaled_loop",
-        "zbfWcnImpaled_IntensiveRust": "wnc_impaled_loop",
-        "zbfWcnImpaled_RedRust": "wnc_impaled_loop",
-        "zbfWcnImpaled_ShinyMetal": "wnc_impaled_loop"
+        "zbfWcnImpaled": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS"
+        },
+        "zbfWcnImpaled_Copper": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS"
+        },
+        "zbfWcnImpaled_Gold": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS"
+        },
+        "zbfWcnImpaled_GreenRust": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS"
+        },
+        "zbfWcnImpaled_GreyRust": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS"
+        },
+        "zbfWcnImpaled_IntensiveRust": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS"
+        },
+        "zbfWcnImpaled_RedRust": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS"
+        },
+        "zbfWcnImpaled_ShinyMetal": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS"
+        }
     },
-
     "Work": {
-        "BRFF_MineOreFloor": "idlepickaxefloorenterinstant",
-        "BRFF_Farm": "idlehoe"
+        "BRFF_MineOreFloor": {
+            "animEvent": "idlepickaxefloorenterinstant",
+            "constraints": ""
+        },
+        "BRFF_Farm": {
+            "animEvent": "idlehoe",
+            "constraints": ""
+        }
     },
-
     "Whipping": {
-        "zbfWhippingMarker": "zazwhipping_loop"
+        "zbfWhippingMarker": {
+            "animEvent": "zazwhipping_loop",
+            "constraints": ""
+        }
     },
-
     "Vampire": {
-        "zbfVampireSupply": "xVampireSupplyHang1"
+        "zbfVampireSupply": {
+            "animEvent": "xVampireSupplyHang1",
+            "constraints": "HL"
+        }
     }
 }
