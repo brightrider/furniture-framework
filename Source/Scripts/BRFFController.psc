@@ -4,10 +4,8 @@ Import NetImmerse
 
 Spell Property ActorSpell Auto
 Armor Property ExecutionerRing Auto
-Package Property DoNothing Auto
 Faction Property FFFaction Auto
 
-Int MAPPING
 Int ACTORS
 
 ObjectReference selectedFurniture
@@ -18,11 +16,9 @@ Event OnInit()
     JMap.setObj(mainEntry, "actors", ACTORS)
     JDB.setObj("BRFF", mainEntry)
 
-    Init()
+    DBInit()
 
     RegisterForKey(0x10)
-
-    RegisterForSingleUpdate(3)
 EndEvent
 
 Event OnKeyDown(Int keyCode)
@@ -51,49 +47,26 @@ Event OnKeyDown(Int keyCode)
         Debug.Notification("Add: " + selectedRef.GetBaseObject().GetName())
         Return
     EndIf
+
+    Debug.Notification("Refresh")
+    Refresh()
 EndEvent
 
-Event OnUpdate()
-    Actor k = JFormMap.nextKey(ACTORS) as Actor
-    While k
-        ObjectReference furn = JMap.getForm(JFormMap.getObj(ACTORS, k), "furniture") as ObjectReference
-        If furn.IsDeleted()
-            furn = furn.PlaceAtMe(furn.GetBaseObject())
-            JMap.setForm(JFormMap.getObj(ACTORS, k), "furniture", furn)
-        EndIf
-        If (Game.GetPlayer().GetDistance(furn) < 102400) || Game.GetPlayer().HasLOS(furn)
-            ; TODO: Workaround, not good.
-            If k.GetDistance(furn) > 1000000
-                k.MoveTo(furn)
-            EndIf
-            If ! k.HasSpell(ActorSpell)
-                k.AddSpell(ActorSpell, abVerbose=False)
-            EndIf
-        Else
-            If k.HasSpell(ActorSpell)
-                k.RemoveSpell(ActorSpell)
-            EndIf
-        EndIf
-
-        k = JFormMap.nextKey(ACTORS, k) as Actor
-    EndWhile
-
-    RegisterForSingleUpdate(1)
+Event ActorHit(Actor ref, Actor attacker)
+    If attacker.IsEquipped(ExecutionerRing)
+        Kill(ref)
+    EndIf
 EndEvent
 
 Function Add(Actor ref, ObjectReference furn)
     Int record = JMap.object()
-    JMap.setInt(record, "new", 1)
-    JMap.setInt(record, "toRemove", 0)
     JMap.setForm(record, "furniture", furn)
-    JMap.setForm(record, "crimeFaction", ref.GetCrimeFaction())
     JMap.setFlt(record, "health", ref.GetAV("Health"))
-    JMap.setFlt(record, "aggression", ref.GetAV("Aggression"))
-    JMap.setFlt(record, "confidence", ref.GetAV("Confidence"))
-    JMap.setFlt(record, "assistance", ref.GetAV("Assistance"))
     JMap.setInt(record, "ignoreFriendlyHits", ref.IsIgnoringFriendlyHits() as Int)
     JMap.setInt(record, "collisionLayer", BRFFSKSELibrary.GetCollisionLayer(furn))
     JFormMap.setObj(ACTORS, ref, record)
+
+    Refresh()
 
     Int handle = ModEvent.Create("BRFF_Add")
     If handle
@@ -104,91 +77,151 @@ Function Add(Actor ref, ObjectReference furn)
 EndFunction
 
 Function Remove(Actor ref)
-    Int record = JFormMap.getObj(ACTORS, ref)
+    Int record = DBGetActorRecord(ref)
+    ObjectReference furn = DBGetFurniture(ref)
+
+    ref.RemoveSpell(ActorSpell)
+    ref.RemoveFromFaction(FFFaction)
+    ref.IgnoreFriendlyHits(JMap.getInt(record, "ignoreFriendlyHits") as Bool)
+    CUnconstraint(ref)
+    CRemoveDummies(ref)
+    If ! ref.IsDead()
+        ref.ForceAV("Health", JMap.getFlt(record, "health"))
+        Debug.SendAnimationEvent(ref, "IdleForceDefaultState")
+        ref.EvaluatePackage()
+    EndIf
+
+    PO3_SKSEFunctions.SetCollisionLayer(furn, "", JMap.getInt(record, "collisionLayer"))
+    furn.BlockActivation(False)
+
+    JFormMap.removeKey(ACTORS, ref)
 
     Int handle = ModEvent.Create("BRFF_Remove")
     If handle
         ModEvent.PushForm(handle, ref)
-        ModEvent.PushForm(handle, JMap.getForm(record, "furniture"))
+        ModEvent.PushForm(handle, furn)
         ModEvent.Send(handle)
     EndIf
-
-    JMap.setInt(record, "toRemove", 1)
 EndFunction
 
-Function Kill(Actor ref, Actor killer=None)
-    String[] nodes = GetConstraintStrings(ref)
-    Int i = 0
-    While i < nodes.Length
-        If nodes[i]
-            CreateConstraintDummy(ref, nodes[i])
-        EndIf
-        i += 1
-    EndWhile
-    ref.Kill(killer)
-    SetConstraints(ref)
+Function Kill(Actor ref)
+    ref.Kill()
+    CConstraint(ref)
 EndFunction
 
-Function RemoveImpl(Actor ref)
-    Int record = JFormMap.getObj(ACTORS, ref)
-    ActorUtil.RemovePackageOverride(ref, DoNothing)
-    ref.SetCrimeFaction(JMap.getForm(record, "crimeFaction") as Faction)
-    ref.RemoveFromFaction(FFFaction)
-    ref.SetAV("Aggression", JMap.getFlt(record, "aggression"))
-    ref.SetAV("Confidence", JMap.getFlt(record, "confidence"))
-    ref.SetAV("Assistance", JMap.getFlt(record, "assistance"))
-    ref.IgnoreFriendlyHits(JMap.getInt(record, "ignoreFriendlyHits") as Bool)
-    ref.SetRestrained(False)
-    ref.SetDontMove(False)
-    String[] nodes = GetConstraintStrings(ref)
-    Int i = 0
-    While i < nodes.Length
-        If nodes[i]
-            ObjectReference dummy = JMap.getForm(record, nodes[i]) as ObjectReference
-            Game.RemoveHavokConstraints(ref, nodes[i], dummy, "AttachDummy")
-            dummy.Delete()
+Function Refresh()
+    Actor key_ = JFormMap.nextKey(ACTORS) as Actor
+    While key_
+        Actor player = Game.GetPlayer()
+        ObjectReference furn = DBGetFurniture(key_)
+        If (player.GetDistance(furn) < 102400) || player.HasLOS(furn)
+            FConfigure(furn)
+            AConfigure(key_)
+            EEquipItemsFromConfig(key_)
+            CCreateDummies(key_)
+            CPositionDummies(key_)
+            CConstraint(key_)
         EndIf
+        key_ = JFormMap.nextKey(ACTORS, key_) as Actor
+    EndWhile
+EndFunction
+
+; ----------------------------------------------------------------------------------------------------------------------
+; Database
+; ----------------------------------------------------------------------------------------------------------------------
+Function DBInit()
+    Int mapping = JMap.object()
+    Int vals = JMap.allValues(JValue.readFromFile("Data/brff_mapping.json"))
+    Int i = 0
+    While i < JArray.count(vals)
+        JMap.addPairs(mapping, JArray.getObj(vals, i), overrideDuplicates=True)
         i += 1
     EndWhile
+    JMap.setObj(JDB.solveObj(".BRFF"), "mapping", mapping)
+EndFunction
+
+Int Function DBGetMapping()
+    Return JDB.solveObj(".BRFF.mapping")
+EndFunction
+
+Int Function DBGetMappingRecord(Actor ref)
+    Return JMap.getObj(DBGetMapping(), FGetEditorId(DBGetFurniture(ref)))
+EndFunction
+
+Int Function DBGetActorRecord(Actor ref)
+    Return JFormMap.getObj(ACTORS, ref)
+EndFunction
+
+ObjectReference Function DBGetFurniture(Actor ref)
+    Return JMap.getForm(DBGetActorRecord(ref), "furniture") as ObjectReference
+EndFunction
+
+String Function DBGetEvent(Actor ref)
+    Return JMap.getStr(DBGetMappingRecord(ref), "animEvent")
+EndFunction
+
+String Function DBGetConstraints(Actor ref)
+    Return JMap.getStr(DBGetMappingRecord(ref), "constraints")
+EndFunction
+
+Int Function DBGetBondArmsOnDeath(Actor ref)
+    Return JMap.getInt(DBGetMappingRecord(ref), "bondArmsOnDeath")
+EndFunction
+
+Int Function DBGetBondLegsOnDeath(Actor ref)
+    Return JMap.getInt(DBGetMappingRecord(ref), "bondLegsOnDeath")
+EndFunction
+
+Int Function DBGetEquipment(Actor ref)
+    Return JMap.getObj(DBGetMappingRecord(ref), "equipment")
+EndFunction
+
+ObjectReference Function DBAGetRef(Actor ref, String name)
+    Return JMap.getForm(DBGetActorRecord(ref), name) as ObjectReference
+EndFunction
+
+Function DBASetRef(Actor ref, String name, ObjectReference value)
+    JMap.setForm(DBGetActorRecord(ref), name, value)
+EndFunction
+; ----------------------------------------------------------------------------------------------------------------------
+
+; ----------------------------------------------------------------------------------------------------------------------
+; Math
+; ----------------------------------------------------------------------------------------------------------------------
+Int Function Mod(Float a, Float b)
+    Return Math.Floor(a - Math.Floor(a / b) * b)
+EndFunction
+; ----------------------------------------------------------------------------------------------------------------------
+
+; ----------------------------------------------------------------------------------------------------------------------
+; Actor
+; ----------------------------------------------------------------------------------------------------------------------
+Function AConfigure(Actor ref)
     If ! ref.IsDead()
-        ref.ForceAV("Health", JMap.getFlt(record, "health"))
-        ref.EvaluatePackage()
-        Debug.SendAnimationEvent(ref, "IdleForceDefaultState")
+        ref.ForceAV("Health", 1000000000)
     EndIf
-    ObjectReference furn = JMap.getForm(record, "furniture") as ObjectReference
-    PO3_SKSEFunctions.SetCollisionLayer(furn, "", JMap.getInt(record, "collisionLayer"))
-    furn.BlockActivation(False)
-    JFormMap.removeKey(ACTORS, ref)
-EndFunction
-
-Function ConfigureActor(Actor ref, bool shouldAddPackage=True)
-    If ref.IsDead()
-        SetConstraints(ref)
-        ref.IgnoreFriendlyHits(False)
-        ref.SetRestrained(False)
-        ref.SetDontMove(False)
-        Return
-    EndIf
-    If shouldAddPackage
-        ActorUtil.AddPackageOverride(ref, DoNothing, 100)
-        ref.EvaluatePackage()
-    EndIf
-    ref.SetCrimeFaction(None)
     ref.AddToFaction(FFFaction)
-    ref.ForceAV("Health", 1000000000)
-    ref.SetAV("Aggression", 0)
-    ref.SetAV("Confidence", 4)
-    ref.SetAV("Assistance", 0)
     ref.IgnoreFriendlyHits()
-    ref.StopCombatAlarm()
-    ref.SetAlert(False)
-    ref.SetRestrained()
-    ref.SetDontMove()
-    ; ref.SetUnconscious()
-    ; ref.Reset()
+    ref.MoveTo(DBGetFurniture(ref))
+    ASAE(ref)
+    ref.AddSpell(ActorSpell)
 EndFunction
 
-Function ConfigureFurniture(ObjectReference furn)
+Function ASAE(Actor ref)
+    If ! ref.IsDead()
+        Debug.SendAnimationEvent(ref, DBGetEvent(ref))
+    EndIf
+EndFunction
+; ----------------------------------------------------------------------------------------------------------------------
+
+; ----------------------------------------------------------------------------------------------------------------------
+; Furniture
+; ----------------------------------------------------------------------------------------------------------------------
+String Function FGetEditorId(ObjectReference furn)
+    Return PO3_SKSEFunctions.GetFormEditorID(furn.GetBaseObject())
+EndFunction
+
+Function FConfigure(ObjectReference furn)
     If furn.GetAngleX() != 0 || furn.GetAngleY() != 0
         furn.SetAngle(0, 0, Mod(furn.GetAngleZ(), 360))
     EndIf
@@ -197,165 +230,154 @@ Function ConfigureFurniture(ObjectReference furn)
     EndIf
     furn.BlockActivation()
 EndFunction
+; ----------------------------------------------------------------------------------------------------------------------
 
-Function Init()
-    JValue.release(MAPPING)
-    MAPPING = JMap.object()
-    Int vals = JMap.allValues(JValue.readFromFile("Data/brff_mapping.json"))
+; ----------------------------------------------------------------------------------------------------------------------
+; Equipment
+; ----------------------------------------------------------------------------------------------------------------------
+Function EEquipItemsFromConfig(Actor ref)
+    Int equipment = DBGetEquipment(ref)
     Int i = 0
-    While i < JArray.count(vals)
-        JMap.addPairs(MAPPING, JArray.getObj(vals, i), overrideDuplicates=True)
-
+    While i < JArray.count(equipment)
+        ref.EquipItem(PO3_SKSEFunctions.GetFormFromEditorID(JArray.getStr(equipment, i)))
         i += 1
     EndWhile
-    JValue.retain(MAPPING)
+EndFunction
+; ----------------------------------------------------------------------------------------------------------------------
+
+; ----------------------------------------------------------------------------------------------------------------------
+; Constraints
+; ----------------------------------------------------------------------------------------------------------------------
+Function CCreateDummies(Actor ref)
+    Int nodes = CGetStrings(ref)
+    Int i = 0
+    While i < JArray.count(nodes)
+        ObjectReference dummy = DBAGetRef(ref, JArray.getStr(nodes, i))
+        If ! dummy
+            dummy = ref.PlaceAtMe(Game.GetForm(0xD19BA), abForcePersist=True)
+            DBASetRef(ref, JArray.getStr(nodes, i), dummy)
+        EndIf
+        i += 1
+    EndWhile
 EndFunction
 
-String[] Function GetConstraintStrings(Actor ref)
-    String[] result = new String[8]
-    Int record = JFormMap.getObj(ACTORS, ref)
-    ObjectReference furn = JMap.getForm(record, "furniture") as ObjectReference
-    String mask = JMap.getStr(JMap.getObj(MAPPING, PO3_SKSEFunctions.GetFormEditorID(furn.GetBaseObject())), "constraints")
-    If StringUtil.Find(mask, "N") != -1
-        result[0] = "NPC Head [Head]"
-    EndIf
-    If StringUtil.Find(mask, "H") != -1
-        result[1] = "NPC L Hand [LHnd]"
-        result[2] = "NPC R Hand [RHnd]"
-    EndIf
-    If StringUtil.Find(mask, "L") != -1
-        result[3] = "NPC L Foot [Lft ]"
-        result[4] = "NPC R Foot [Rft ]"
-    EndIf
-    If StringUtil.Find(mask, "A") != -1
-        result[5] = "NPC L ForearmTwist2 [LLt2]"
-        result[6] = "NPC R ForearmTwist2 [RLt2]"
-    EndIf
-    If StringUtil.Find(mask, "S") != -1
-        result[7] = "NPC Spine2 [Spn2]"
-    EndIf
-    Return result
+Function CRemoveDummies(Actor ref)
+    Int nodes = CGetStrings(ref)
+    Int i = 0
+    While i < JArray.count(nodes)
+        ObjectReference dummy = DBAGetRef(ref, JArray.getStr(nodes, i))
+        If dummy
+            dummy.Delete()
+        EndIf
+        i += 1
+    EndWhile
 EndFunction
 
-Function HandleActor(Actor ref)
-    Int record = JFormMap.getObj(ACTORS, ref)
-
-    If JMap.getInt(record, "toRemove") == 1
-        RemoveImpl(ref)
-    EndIf
-
-    If JMap.getInt(record, "toRemove", 100) != 0
-        ref.RemoveSpell(ActorSpell)
+Function CPositionDummies(Actor ref)
+    If ref.IsDead()
         Return
     EndIf
 
-    ObjectReference furn = JMap.getForm(record, "furniture") as ObjectReference
-    If JMap.getInt(record, "new")
-        JMap.setInt(record, "new", 0)
-        ConfigureFurniture(furn)
-        ConfigureActor(ref)
-        TryPosition(ref, furn)
-    Else
-        If ! TryPosition(ref, furn)
-            ConfigureFurniture(furn)
-            ConfigureActor(ref, False)
+    Int nodes = CGetStrings(ref)
+    Int i = 0
+    While i < JArray.count(nodes)
+        String nodeName = JArray.getStr(nodes, i)
+        ObjectReference dummy = DBAGetRef(ref, nodeName)
+        If dummy
+            Float posX = GetNodeWorldPositionX(ref, nodeName, firstPerson=False)
+            Float posY = GetNodeWorldPositionY(ref, nodeName, firstPerson=False)
+            Float posZ = GetNodeWorldPositionZ(ref, nodeName, firstPerson=False)
+            dummy.SetPosition(posX, posY, posZ)
         EndIf
-    EndIf
+        i += 1
+    EndWhile
+EndFunction
+
+Function CConstraint(Actor ref)
     If ! ref.IsDead()
-        Debug.SendAnimationEvent(ref, JMap.getStr(JMap.getObj(MAPPING,\
-            PO3_SKSEFunctions.GetFormEditorID(furn.GetBaseObject())), "animEvent"))
+        Return
     EndIf
-    Utility.Wait(1)
-EndFunction
 
-Function HandleActorHit(Actor ref, Actor attacker)
-    If attacker.IsEquipped(ExecutionerRing)
-        Kill(ref, attacker)
-    EndIf
-EndFunction
-
-Function SetConstraints(Actor ref)
-    Int record = JFormMap.getObj(ACTORS, ref)
-    String[] nodes = GetConstraintStrings(ref)
+    Int nodes = CGetStrings(ref)
     Int i = 0
-    Bool shouldApplyImpulse = False
-    While i < nodes.Length
-        If nodes[i]
-            ObjectReference dummy = JMap.getForm(record, nodes[i]) as ObjectReference
-            If dummy
-                shouldApplyImpulse = True
-                Game.AddHavokBallAndSocketConstraint(ref, nodes[i], dummy, "AttachDummy")
-            EndIf
-        EndIf
-        i += 1
-    EndWhile
-    If shouldApplyImpulse
-        ref.ApplyHavokImpulse(1, 1, 1, 1)
-    EndIf
-EndFunction
-
-Function CreateConstraintDummy(Actor ref, String node)
-    Int record = JFormMap.getObj(ACTORS, ref)
-    ObjectReference dummy = JMap.getForm(record, node) as ObjectReference
-    If ! dummy
-        Float posX = GetNodeWorldPositionX(ref, node, firstPerson=False)
-        Float posY = GetNodeWorldPositionY(ref, node, firstPerson=False)
-        Float posZ = GetNodeWorldPositionZ(ref, node, firstPerson=False)
-        dummy = ref.PlaceAtMe(Game.GetForm(0xD19BA), 1, abForcePersist=True)
-        JMap.setForm(record, node, dummy)
-        ObjectReference furn = JMap.getForm(record, "furniture") as ObjectReference
-        JMap.setFlt(record, node + "relX", posX - furn.X)
-        JMap.setFlt(record, node + "relY", posY - furn.Y)
-        JMap.setFlt(record, node + "relZ", posZ - furn.Z)
-        dummy.SetPosition(posX, posY, posZ)
-    EndIf
-EndFunction
-
-Bool Function TryPosition(Actor ref, ObjectReference furn)
-    Int record = JFormMap.getObj(ACTORS, ref)
-    String[] nodes = GetConstraintStrings(ref)
-    Int i = 0
-    While i < nodes.Length
-        If nodes[i]
-            ObjectReference dummy = JMap.getForm(record, nodes[i]) as ObjectReference
-            If dummy
-                Float relX = JMap.getFlt(record, nodes[i] + "relX")
-                Float relY = JMap.getFlt(record, nodes[i] + "relY")
-                Float relZ = JMap.getFlt(record, nodes[i] + "relZ")
-                If furn.X + relX != dummy.X || furn.Y + relY != dummy.Y || furn.Z + relZ != dummy.Z
-                    dummy.MoveTo(furn, relX, relY, relZ)
-                EndIf
-            EndIf
+    While i < JArray.count(nodes)
+        ObjectReference dummy = DBAGetRef(ref, JArray.getStr(nodes, i))
+        If dummy
+            Game.AddHavokBallAndSocketConstraint(ref, JArray.getStr(nodes, i), dummy, "AttachDummy")
+            ref.ApplyHavokImpulse(0.1, 0.1, 0.1, 0.1)
         EndIf
         i += 1
     EndWhile
 
-    If ref.IsDead()
-        Return False
+    CConstraintHandcuffsArms(ref)
+    CConstraintHandcuffsLegs(ref)
+EndFunction
+
+Function CConstraintHandcuffsArms(Actor ref)
+    If DBGetBondArmsOnDeath(ref) == 0
+        Return
     EndIf
 
-    Int c = 0
-    While c < 3
-        Int aX = Math.Floor(ref.X)
-        Int aY = Math.Floor(ref.Y)
-        Int aZ = Math.Floor(ref.Z)
-        Int aR = Math.Floor(ref.GetAngleZ())
-        Int fX = Math.Floor(furn.X)
-        Int fY = Math.Floor(furn.Y)
-        Int fZ = Math.Floor(furn.Z)
-        Int fR = Math.Floor(furn.GetAngleZ())
-        If aX == fX && aY == fY && aZ == fZ && aR == fR
-            Return True
+    If ! ref.IsDead()
+        Return
+    EndIf
+
+    Game.AddHavokBallAndSocketConstraint(ref, "NPC L Hand [LHnd]", ref, "NPC Spine [Spn0]", -3, 7, 8)
+    Game.AddHavokBallAndSocketConstraint(ref, "NPC R Hand [RHnd]", ref, "NPC Spine [Spn0]", 3, 7, 8)
+EndFunction
+
+Function CConstraintHandcuffsLegs(Actor ref)
+    If DBGetBondLegsOnDeath(ref) == 0
+        Return
+    EndIf
+
+    If ! ref.IsDead()
+        Return
+    EndIf
+
+    Game.AddHavokBallAndSocketConstraint(ref, "NPC L Foot [Lft ]", ref, "NPC R Foot [Rft ]")
+    Game.AddHavokBallAndSocketConstraint(ref, "NPC R Foot [Rft ]", ref, "NPC L Foot [Lft ]")
+EndFunction
+
+Function CUnconstraint(Actor ref)
+    If ! ref.IsDead()
+        Return
+    EndIf
+
+    Int nodes = CGetStrings(ref)
+    Int i = 0
+    While i < JArray.count(nodes)
+        ObjectReference dummy = DBAGetRef(ref, JArray.getStr(nodes, i))
+        If dummy
+            Game.RemoveHavokConstraints(ref, JArray.getStr(nodes, i), dummy, "AttachDummy")
         EndIf
-
-        ref.MoveTo(furn)
-
-        c += 1
+        i += 1
     EndWhile
-
-    Return False
 EndFunction
 
-Int Function Mod(Float a, Float b)
-    Return Math.Floor(a - Math.Floor(a / b) * b)
+Int Function CGetStrings(Actor ref)
+    Int result = JArray.object()
+
+    String mask = DBGetConstraints(ref)
+    If StringUtil.Find(mask, "N") != -1
+        JArray.addStr(result, "NPC Head [Head]")
+    EndIf
+    If StringUtil.Find(mask, "H") != -1
+        JArray.addStr(result, "NPC L Hand [LHnd]")
+        JArray.addStr(result, "NPC R Hand [RHnd]")
+    EndIf
+    If StringUtil.Find(mask, "L") != -1
+        JArray.addStr(result, "NPC L Foot [Lft ]")
+        JArray.addStr(result, "NPC R Foot [Rft ]")
+    EndIf
+    If StringUtil.Find(mask, "A") != -1
+        JArray.addStr(result, "NPC L UpperArm [LUar]")
+        JArray.addStr(result, "NPC R UpperArm [RUar]")
+    EndIf
+    If StringUtil.Find(mask, "S") != -1
+        JArray.addStr(result, "NPC Spine2 [Spn2]")
+    EndIf
+
+    Return result
 EndFunction
+; ------------------------------------------------------------------------------
