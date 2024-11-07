@@ -1,0 +1,597 @@
+{
+    "Bondage": {
+        "zbfBitchOnTheGroundStruggling_Rope": {
+            "animEvent": "zazgirlstrugglingontheground_loop",
+            "constraints": "",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfBitchOnTheGroundStruggling_Rug": {
+            "animEvent": "zazgirlstrugglingontheground_loop",
+            "constraints": "",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        }
+    },
+    "Captive": {
+        "zbfCaptiveBoundOnKneesMarker": {
+            "animEvent": "zazboundknees_loop",
+            "constraints": "",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        }
+    },
+    "Buried": {
+        "zbfBuriedIntoTheGroundWithShovelsAround": {
+            "animEvent": "zazburied_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Display - Front": {
+        "zbfChainedUnderTheGallow01": {
+            "animEvent": "zazapchains01_loop",
+            "constraints": "H",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
+        },
+        "zbfRestraintPoleShackles01": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NHL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
+        },
+        "zbfRestraintPoleShackles01_DarkWood": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NHL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
+        },
+        "zbfRestraintPoleShackles01_MidWood": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NHL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
+        },
+        "zbfRestraintPoleShackles01_StdWood": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NHL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
+        },
+        "zbfRestraintWallShackles01": {
+            "animEvent": "zazrspp01_loop",
+            "constraints": "NHL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
+        }
+    },
+    "Display - UprightDown": {
+        "zbfPoleBondageUprightDownHanging": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfPoleBondageUprightDownHanging_DarkWoor": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfPoleBondageUprightDownHanging_MidWoor": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfPoleBondageUprightDownHanging_StdWoor": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfPoleBondageUprightDownHangingMarker": {
+            "animEvent": "zazuprightdown_loop",
+            "constraints": "L",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        }
+    },
+    "Pole Dance": {
+        "zbfPoleDance_DarkCoarseWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPoleDance_DarkWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPoleDance_FarmhouseStyle": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPoleDance_FullMetal": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPoleDance_LiteCoarseWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPoleDance_LitePlainWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPoleDance_MidWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPoleDance_ShipWoodStyle": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPoleDance_StdWood": {
+            "animEvent": "zazpoledance_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Wheels": {
+        "zbfCircusWheel": {
+            "animEvent": "xcircuswheelspin",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWaterWheelIndoor": {
+            "animEvent": "xzazwaterbondagewheelindoorspin",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWaterWheelMini": {
+            "animEvent": "xwaterwheelminispin",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Crosses": {
+        "zbfWcnCrucifiedCruxMkII": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnCrucifiedCruxMkII_DarkCoarseWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnCrucifiedCruxMkII_DarkWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnCrucifiedCruxMkII_FarmWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnCrucifiedCruxMkII_LitePlainWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnCrucifiedCruxMkII_MidWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnCrucifiedCruxMkII_StdWood": {
+            "animEvent": "wnc_crucified_loop",
+            "constraints": "HL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Coffins": {
+        "glassCoffinShy": {
+            "animEvent": "xcoffinglassshy",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "glassCoffinSleep1": {
+            "animEvent": "xcoffinglasssleeping",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "glassCoffinSleep2": {
+            "animEvent": "xcoffinglasssleeping2",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "glassCoffinStruggle": {
+            "animEvent": "xcoffinglassstruggle",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Dead": {
+        "zbfGallowPoleBrown": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "N",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfGallowPoleFreeStandingOutside": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "N",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfGallowPoleFreeStandingOutsideFarmHouseBrown": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "N",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfGallowPoleFreeStandingOutsideFarmHouseGrey": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "N",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfGallowPoleGreen": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "N",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfGallowPoleWallMounted": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "N",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfGallowPoleWallMountedBrown": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "N",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        },
+        "zbfGallowPoleWallMountedGreen": {
+            "animEvent": "zazgallow_dead",
+            "constraints": "N",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope01"]
+        }
+    },
+    "Fire": {
+        "zbfPyre": {
+            "animEvent": "zazpyre_loop",
+            "constraints": "A",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfPyreSetTheFire": {
+            "animEvent": "zazfireupthefire_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "Campfire01Burning": {
+            "animEvent": "",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Shackles": {
+        "zbfImpShackleWallHeadDown": {
+            "animEvent": "zazshacklewallheaddownrigid_loop",
+            "constraints": "L",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfImpShackleWallHeadDown_DarkSteel": {
+            "animEvent": "zazshacklewallheaddownrigid_loop",
+            "constraints": "L",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfImpShackleWallHeadDown_GreenYellowRust": {
+            "animEvent": "zazshacklewallheaddownrigid_loop",
+            "constraints": "L",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfImpShackleWallRigid": {
+            "animEvent": "zazshacklewallrigid_loop",
+            "constraints": "H",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfImpShackleWallRigid_DarkSteel": {
+            "animEvent": "zazshacklewallrigid_loop",
+            "constraints": "H",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfImpShackleWallRigid_GreenYellowRust": {
+            "animEvent": "zazshacklewallrigid_loop",
+            "constraints": "H",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfImpShackleWallStrict": {
+            "animEvent": "zazapstrictwallshacklescustom_loop",
+            "constraints": "NHL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfImpShackleWallStrict_DarkSteel": {
+            "animEvent": "zazapstrictwallshacklescustom_loop",
+            "constraints": "NHL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfImpShackleWallStrict_GreenYellowRust": {
+            "animEvent": "zazapstrictwallshacklescustom_loop",
+            "constraints": "NHL",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Impalers": {
+        "zbfWcnImpaled": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnImpaled_Copper": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnImpaled_Gold": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnImpaled_GreenRust": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnImpaled_GreyRust": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnImpaled_IntensiveRust": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnImpaled_RedRust": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "zbfWcnImpaled_ShinyMetal": {
+            "animEvent": "wnc_impaled_loop",
+            "constraints": "NS",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Work": {
+        "BRFF_MineOreFloor": {
+            "animEvent": "idlepickaxefloorenterinstant",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        },
+        "BRFF_Farm": {
+            "animEvent": "idlehoe",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Whipping": {
+        "zbfWhippingMarker": {
+            "animEvent": "zazwhipping_loop",
+            "constraints": "",
+            "bondArms": 0,
+            "bondLegs": 0,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": []
+        }
+    },
+    "Vampire": {
+        "zbfVampireSupply": {
+            "animEvent": "xVampireSupplyHang1",
+            "ragdollMode": 1,
+            "constraints": "L",
+            "bondArms": 1,
+            "bondLegs": 1,
+            "equipmentAnimMode": [],
+            "equipmentRagdollMode": ["zbfCuffsRope02"],
+            "NPC L Foot [Lft ]": [-11.929688, -16.453125, 157.122971],
+            "NPC R Foot [Rft ]": [-8.939453, -18.285156, 157.123840]
+        }
+    }
+}
