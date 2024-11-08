@@ -2,6 +2,7 @@
     "Bondage": {
         "zbfBitchOnTheGroundStruggling_Rope": {
             "animEvent": "zazgirlstrugglingontheground_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 1,
             "bondLegs": 1,
@@ -10,6 +11,7 @@
         },
         "zbfBitchOnTheGroundStruggling_Rug": {
             "animEvent": "zazgirlstrugglingontheground_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 1,
             "bondLegs": 1,
@@ -20,6 +22,7 @@
     "Captive": {
         "zbfCaptiveBoundOnKneesMarker": {
             "animEvent": "zazboundknees_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 1,
             "bondLegs": 1,
@@ -30,6 +33,7 @@
     "Buried": {
         "zbfBuriedIntoTheGroundWithShovelsAround": {
             "animEvent": "zazburied_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -40,6 +44,7 @@
     "Display - Front": {
         "zbfChainedUnderTheGallow01": {
             "animEvent": "zazapchains01_loop",
+            "ragdollMode": 0,
             "constraints": "H",
             "bondArms": 0,
             "bondLegs": 0,
@@ -48,6 +53,7 @@
         },
         "zbfRestraintPoleShackles01": {
             "animEvent": "zazrspp01_loop",
+            "ragdollMode": 0,
             "constraints": "NHL",
             "bondArms": 0,
             "bondLegs": 0,
@@ -56,6 +62,7 @@
         },
         "zbfRestraintPoleShackles01_DarkWood": {
             "animEvent": "zazrspp01_loop",
+            "ragdollMode": 0,
             "constraints": "NHL",
             "bondArms": 0,
             "bondLegs": 0,
@@ -64,6 +71,7 @@
         },
         "zbfRestraintPoleShackles01_MidWood": {
             "animEvent": "zazrspp01_loop",
+            "ragdollMode": 0,
             "constraints": "NHL",
             "bondArms": 0,
             "bondLegs": 0,
@@ -72,6 +80,7 @@
         },
         "zbfRestraintPoleShackles01_StdWood": {
             "animEvent": "zazrspp01_loop",
+            "ragdollMode": 0,
             "constraints": "NHL",
             "bondArms": 0,
             "bondLegs": 0,
@@ -80,6 +89,7 @@
         },
         "zbfRestraintWallShackles01": {
             "animEvent": "zazrspp01_loop",
+            "ragdollMode": 0,
             "constraints": "NHL",
             "bondArms": 0,
             "bondLegs": 0,
@@ -90,6 +100,7 @@
     "Display - UprightDown": {
         "zbfPoleBondageUprightDownHanging": {
             "animEvent": "zazuprightdown_loop",
+            "ragdollMode": 0,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
@@ -98,6 +109,7 @@
         },
         "zbfPoleBondageUprightDownHanging_DarkWoor": {
             "animEvent": "zazuprightdown_loop",
+            "ragdollMode": 0,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
@@ -106,6 +118,7 @@
         },
         "zbfPoleBondageUprightDownHanging_MidWoor": {
             "animEvent": "zazuprightdown_loop",
+            "ragdollMode": 0,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
@@ -114,6 +127,7 @@
         },
         "zbfPoleBondageUprightDownHanging_StdWoor": {
             "animEvent": "zazuprightdown_loop",
+            "ragdollMode": 0,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
@@ -122,6 +136,7 @@
         },
         "zbfPoleBondageUprightDownHangingMarker": {
             "animEvent": "zazuprightdown_loop",
+            "ragdollMode": 0,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
@@ -132,6 +147,7 @@
     "Pole Dance": {
         "zbfPoleDance_DarkCoarseWood": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -140,6 +156,7 @@
         },
         "zbfPoleDance_DarkWood": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -148,6 +165,7 @@
         },
         "zbfPoleDance_FarmhouseStyle": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -156,6 +174,7 @@
         },
         "zbfPoleDance_FullMetal": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -164,6 +183,7 @@
         },
         "zbfPoleDance_LiteCoarseWood": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -172,6 +192,7 @@
         },
         "zbfPoleDance_LitePlainWood": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -180,6 +201,7 @@
         },
         "zbfPoleDance_MidWood": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -188,6 +210,7 @@
         },
         "zbfPoleDance_ShipWoodStyle": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -196,6 +219,7 @@
         },
         "zbfPoleDance_StdWood": {
             "animEvent": "zazpoledance_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -206,6 +230,7 @@
     "Wheels": {
         "zbfCircusWheel": {
             "animEvent": "xcircuswheelspin",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -214,6 +239,7 @@
         },
         "zbfWaterWheelIndoor": {
             "animEvent": "xzazwaterbondagewheelindoorspin",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -222,6 +248,7 @@
         },
         "zbfWaterWheelMini": {
             "animEvent": "xwaterwheelminispin",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -232,64 +259,100 @@
     "Crosses": {
         "zbfWcnCrucifiedCruxMkII": {
             "animEvent": "wnc_crucified_loop",
+            "ragdollMode": 1,
             "constraints": "HL",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Hand [LHnd]": [-49.931641, 9.675781, 118.894630],
+            "NPC R Hand [RHnd]": [43.933594, -25.972656, 118.230751],
+            "NPC L Foot [Lft ]": [-3.802734, -3.625000, 17.417133],
+            "NPC R Foot [Rft ]": [1.435547, -0.703125, 16.715635]
         },
         "zbfWcnCrucifiedCruxMkII_DarkCoarseWood": {
             "animEvent": "wnc_crucified_loop",
+            "ragdollMode": 1,
             "constraints": "HL",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Hand [LHnd]": [-49.931641, 9.675781, 118.894630],
+            "NPC R Hand [RHnd]": [43.933594, -25.972656, 118.230751],
+            "NPC L Foot [Lft ]": [-3.802734, -3.625000, 17.417133],
+            "NPC R Foot [Rft ]": [1.435547, -0.703125, 16.715635]
         },
         "zbfWcnCrucifiedCruxMkII_DarkWood": {
             "animEvent": "wnc_crucified_loop",
+            "ragdollMode": 1,
             "constraints": "HL",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Hand [LHnd]": [-49.931641, 9.675781, 118.894630],
+            "NPC R Hand [RHnd]": [43.933594, -25.972656, 118.230751],
+            "NPC L Foot [Lft ]": [-3.802734, -3.625000, 17.417133],
+            "NPC R Foot [Rft ]": [1.435547, -0.703125, 16.715635]
         },
         "zbfWcnCrucifiedCruxMkII_FarmWood": {
             "animEvent": "wnc_crucified_loop",
+            "ragdollMode": 1,
             "constraints": "HL",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Hand [LHnd]": [-49.931641, 9.675781, 118.894630],
+            "NPC R Hand [RHnd]": [43.933594, -25.972656, 118.230751],
+            "NPC L Foot [Lft ]": [-3.802734, -3.625000, 17.417133],
+            "NPC R Foot [Rft ]": [1.435547, -0.703125, 16.715635]
         },
         "zbfWcnCrucifiedCruxMkII_LitePlainWood": {
             "animEvent": "wnc_crucified_loop",
+            "ragdollMode": 1,
             "constraints": "HL",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Hand [LHnd]": [-49.931641, 9.675781, 118.894630],
+            "NPC R Hand [RHnd]": [43.933594, -25.972656, 118.230751],
+            "NPC L Foot [Lft ]": [-3.802734, -3.625000, 17.417133],
+            "NPC R Foot [Rft ]": [1.435547, -0.703125, 16.715635]
         },
         "zbfWcnCrucifiedCruxMkII_MidWood": {
             "animEvent": "wnc_crucified_loop",
+            "ragdollMode": 1,
             "constraints": "HL",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Hand [LHnd]": [-49.931641, 9.675781, 118.894630],
+            "NPC R Hand [RHnd]": [43.933594, -25.972656, 118.230751],
+            "NPC L Foot [Lft ]": [-3.802734, -3.625000, 17.417133],
+            "NPC R Foot [Rft ]": [1.435547, -0.703125, 16.715635]
         },
         "zbfWcnCrucifiedCruxMkII_StdWood": {
             "animEvent": "wnc_crucified_loop",
+            "ragdollMode": 1,
             "constraints": "HL",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Hand [LHnd]": [-49.931641, 9.675781, 118.894630],
+            "NPC R Hand [RHnd]": [43.933594, -25.972656, 118.230751],
+            "NPC L Foot [Lft ]": [-3.802734, -3.625000, 17.417133],
+            "NPC R Foot [Rft ]": [1.435547, -0.703125, 16.715635]
         }
     },
     "Coffins": {
         "glassCoffinShy": {
             "animEvent": "xcoffinglassshy",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -298,6 +361,7 @@
         },
         "glassCoffinSleep1": {
             "animEvent": "xcoffinglasssleeping",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -306,6 +370,7 @@
         },
         "glassCoffinSleep2": {
             "animEvent": "xcoffinglasssleeping2",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -314,6 +379,7 @@
         },
         "glassCoffinStruggle": {
             "animEvent": "xcoffinglassstruggle",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -324,6 +390,7 @@
     "Dead": {
         "zbfGallowPoleBrown": {
             "animEvent": "zazgallow_dead",
+            "ragdollMode": 0,
             "constraints": "N",
             "bondArms": 1,
             "bondLegs": 1,
@@ -332,6 +399,7 @@
         },
         "zbfGallowPoleFreeStandingOutside": {
             "animEvent": "zazgallow_dead",
+            "ragdollMode": 0,
             "constraints": "N",
             "bondArms": 1,
             "bondLegs": 1,
@@ -340,6 +408,7 @@
         },
         "zbfGallowPoleFreeStandingOutsideFarmHouseBrown": {
             "animEvent": "zazgallow_dead",
+            "ragdollMode": 0,
             "constraints": "N",
             "bondArms": 1,
             "bondLegs": 1,
@@ -348,6 +417,7 @@
         },
         "zbfGallowPoleFreeStandingOutsideFarmHouseGrey": {
             "animEvent": "zazgallow_dead",
+            "ragdollMode": 0,
             "constraints": "N",
             "bondArms": 1,
             "bondLegs": 1,
@@ -356,6 +426,7 @@
         },
         "zbfGallowPoleGreen": {
             "animEvent": "zazgallow_dead",
+            "ragdollMode": 0,
             "constraints": "N",
             "bondArms": 1,
             "bondLegs": 1,
@@ -364,6 +435,7 @@
         },
         "zbfGallowPoleWallMounted": {
             "animEvent": "zazgallow_dead",
+            "ragdollMode": 0,
             "constraints": "N",
             "bondArms": 1,
             "bondLegs": 1,
@@ -372,6 +444,7 @@
         },
         "zbfGallowPoleWallMountedBrown": {
             "animEvent": "zazgallow_dead",
+            "ragdollMode": 0,
             "constraints": "N",
             "bondArms": 1,
             "bondLegs": 1,
@@ -380,6 +453,7 @@
         },
         "zbfGallowPoleWallMountedGreen": {
             "animEvent": "zazgallow_dead",
+            "ragdollMode": 0,
             "constraints": "N",
             "bondArms": 1,
             "bondLegs": 1,
@@ -390,6 +464,7 @@
     "Fire": {
         "zbfPyre": {
             "animEvent": "zazpyre_loop",
+            "ragdollMode": 0,
             "constraints": "A",
             "bondArms": 0,
             "bondLegs": 0,
@@ -398,6 +473,7 @@
         },
         "zbfPyreSetTheFire": {
             "animEvent": "zazfireupthefire_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -406,6 +482,7 @@
         },
         "Campfire01Burning": {
             "animEvent": "",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -416,6 +493,7 @@
     "Shackles": {
         "zbfImpShackleWallHeadDown": {
             "animEvent": "zazshacklewallheaddownrigid_loop",
+            "ragdollMode": 0,
             "constraints": "L",
             "bondArms": 0,
             "bondLegs": 0,
@@ -424,6 +502,7 @@
         },
         "zbfImpShackleWallHeadDown_DarkSteel": {
             "animEvent": "zazshacklewallheaddownrigid_loop",
+            "ragdollMode": 0,
             "constraints": "L",
             "bondArms": 0,
             "bondLegs": 0,
@@ -432,6 +511,7 @@
         },
         "zbfImpShackleWallHeadDown_GreenYellowRust": {
             "animEvent": "zazshacklewallheaddownrigid_loop",
+            "ragdollMode": 0,
             "constraints": "L",
             "bondArms": 0,
             "bondLegs": 0,
@@ -440,6 +520,7 @@
         },
         "zbfImpShackleWallRigid": {
             "animEvent": "zazshacklewallrigid_loop",
+            "ragdollMode": 0,
             "constraints": "H",
             "bondArms": 0,
             "bondLegs": 0,
@@ -448,6 +529,7 @@
         },
         "zbfImpShackleWallRigid_DarkSteel": {
             "animEvent": "zazshacklewallrigid_loop",
+            "ragdollMode": 0,
             "constraints": "H",
             "bondArms": 0,
             "bondLegs": 0,
@@ -456,6 +538,7 @@
         },
         "zbfImpShackleWallRigid_GreenYellowRust": {
             "animEvent": "zazshacklewallrigid_loop",
+            "ragdollMode": 0,
             "constraints": "H",
             "bondArms": 0,
             "bondLegs": 0,
@@ -464,6 +547,7 @@
         },
         "zbfImpShackleWallStrict": {
             "animEvent": "zazapstrictwallshacklescustom_loop",
+            "ragdollMode": 0,
             "constraints": "NHL",
             "bondArms": 0,
             "bondLegs": 0,
@@ -472,6 +556,7 @@
         },
         "zbfImpShackleWallStrict_DarkSteel": {
             "animEvent": "zazapstrictwallshacklescustom_loop",
+            "ragdollMode": 0,
             "constraints": "NHL",
             "bondArms": 0,
             "bondLegs": 0,
@@ -480,6 +565,7 @@
         },
         "zbfImpShackleWallStrict_GreenYellowRust": {
             "animEvent": "zazapstrictwallshacklescustom_loop",
+            "ragdollMode": 0,
             "constraints": "NHL",
             "bondArms": 0,
             "bondLegs": 0,
@@ -490,6 +576,7 @@
     "Impalers": {
         "zbfWcnImpaled": {
             "animEvent": "wnc_impaled_loop",
+            "ragdollMode": 0,
             "constraints": "NS",
             "bondArms": 0,
             "bondLegs": 0,
@@ -498,6 +585,7 @@
         },
         "zbfWcnImpaled_Copper": {
             "animEvent": "wnc_impaled_loop",
+            "ragdollMode": 0,
             "constraints": "NS",
             "bondArms": 0,
             "bondLegs": 0,
@@ -506,6 +594,7 @@
         },
         "zbfWcnImpaled_Gold": {
             "animEvent": "wnc_impaled_loop",
+            "ragdollMode": 0,
             "constraints": "NS",
             "bondArms": 0,
             "bondLegs": 0,
@@ -514,6 +603,7 @@
         },
         "zbfWcnImpaled_GreenRust": {
             "animEvent": "wnc_impaled_loop",
+            "ragdollMode": 0,
             "constraints": "NS",
             "bondArms": 0,
             "bondLegs": 0,
@@ -522,6 +612,7 @@
         },
         "zbfWcnImpaled_GreyRust": {
             "animEvent": "wnc_impaled_loop",
+            "ragdollMode": 0,
             "constraints": "NS",
             "bondArms": 0,
             "bondLegs": 0,
@@ -530,6 +621,7 @@
         },
         "zbfWcnImpaled_IntensiveRust": {
             "animEvent": "wnc_impaled_loop",
+            "ragdollMode": 0,
             "constraints": "NS",
             "bondArms": 0,
             "bondLegs": 0,
@@ -538,6 +630,7 @@
         },
         "zbfWcnImpaled_RedRust": {
             "animEvent": "wnc_impaled_loop",
+            "ragdollMode": 0,
             "constraints": "NS",
             "bondArms": 0,
             "bondLegs": 0,
@@ -546,6 +639,7 @@
         },
         "zbfWcnImpaled_ShinyMetal": {
             "animEvent": "wnc_impaled_loop",
+            "ragdollMode": 0,
             "constraints": "NS",
             "bondArms": 0,
             "bondLegs": 0,
@@ -556,6 +650,7 @@
     "Work": {
         "BRFF_MineOreFloor": {
             "animEvent": "idlepickaxefloorenterinstant",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -564,6 +659,7 @@
         },
         "BRFF_Farm": {
             "animEvent": "idlehoe",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
@@ -574,6 +670,7 @@
     "Whipping": {
         "zbfWhippingMarker": {
             "animEvent": "zazwhipping_loop",
+            "ragdollMode": 0,
             "constraints": "",
             "bondArms": 0,
             "bondLegs": 0,
