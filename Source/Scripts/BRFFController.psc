@@ -3,6 +3,7 @@ Scriptname BRFFController extends Quest
 Import NetImmerse
 
 Spell Property ActorSpell Auto
+Armor Property BeaterRing Auto
 Armor Property ExecutionerRing Auto
 Faction Property FFFaction Auto
 
@@ -52,8 +53,8 @@ Event OnKeyDown(Int keyCode)
 EndEvent
 
 Event ActorHit(Actor ref, Actor attacker)
-    If RActive(ref)
-        attacker.PushActorAway(ref, 3)
+    If attacker.IsEquipped(BeaterRing) && CAllowed(ref)
+        attacker.PushActorAway(ref, 2)
     EndIf
 
     If attacker.IsEquipped(ExecutionerRing)
