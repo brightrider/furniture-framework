@@ -142,7 +142,7 @@ Function Refresh()
         Actor player = Game.GetPlayer()
         ObjectReference furn = DBAGetFurniture(key_)
         If key_.Is3DLoaded() && furn.Is3DLoaded() && ((player.GetDistance(furn) < 102400) || player.HasLOS(furn))
-            FConfigure(furn)
+            FConfigure(key_, furn)
             AConfigure(key_)
             CConfigure(key_)
         EndIf
@@ -187,9 +187,11 @@ EndFunction
 ; ----------------------------------------------------------------------------------------------------------------------
 ; Furniture
 ; ----------------------------------------------------------------------------------------------------------------------
-Function FConfigure(ObjectReference furn)
+Function FConfigure(Actor ref, ObjectReference furn)
     SafeSetAngleNormalized(furn, 0, 0, furn.GetAngleZ())
-    SafeSetCollisionLayer(furn, 15)
+    If ! DBGetCollisionEnabled(ref)
+        SafeSetCollisionLayer(furn, 15)
+    EndIf
     furn.BlockActivation()
 EndFunction
 
@@ -224,6 +226,10 @@ String Function DBGetEvent(Actor ref)
     Return JMap.getStr(DBGetMappingRecord(ref), "animEvent")
 EndFunction
 
+Bool Function DBGetRagdollMode(Actor ref)
+    Return JMap.getInt(DBGetMappingRecord(ref), "ragdollMode") as Bool
+EndFunction
+
 String Function DBGetConstraints(Actor ref)
     Return JMap.getStr(DBGetMappingRecord(ref), "constraints")
 EndFunction
@@ -244,8 +250,8 @@ Int Function DBGetEquipmentRagdollMode(Actor ref)
     Return JMap.getObj(DBGetMappingRecord(ref), "equipmentRagdollMode")
 EndFunction
 
-Bool Function DBGetRagdollMode(Actor ref)
-    Return JMap.getInt(DBGetMappingRecord(ref), "ragdollMode") as Bool
+Bool Function DBGetCollisionEnabled(Actor ref)
+    Return JMap.getInt(DBGetMappingRecord(ref), "collisionEnabled") as Bool
 EndFunction
 
 Float[] Function DBGetDummyPosition(Actor ref, String name)
