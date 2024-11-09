@@ -1,5 +1,6 @@
 Scriptname BRFFController extends Quest
 
+Import Math
 Import NetImmerse
 
 Spell Property ActorSpell Auto
@@ -471,7 +472,11 @@ Function CPositionDummies(Actor ref)
         If dummy
             Float[] pos = DBGetDummyPosition(ref, nodeName)
             If pos
-                SafeMoveTo(dummy, DBAGetFurniture(ref), pos[0], pos[1], pos[2])
+                ObjectReference furn = DBAGetFurniture(ref)
+                Float posX = pos[0] * cos(-furn.GetAngleZ()) + pos[1] * sin(furn.GetAngleZ())
+                Float posY = pos[0] * sin(-furn.GetAngleZ()) + pos[1] * cos(-furn.GetAngleZ())
+                Float posZ = pos[2]
+                SafeMoveTo(dummy, DBAGetFurniture(ref), posX, posY, posZ)
             Else
                 Float posX = GetNodeWorldPositionX(ref, nodeName, firstPerson=False)
                 Float posY = GetNodeWorldPositionY(ref, nodeName, firstPerson=False)

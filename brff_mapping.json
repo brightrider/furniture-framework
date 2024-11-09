@@ -265,10 +265,10 @@
             "bondLegs": 0,
             "equipmentAnimMode": [],
             "equipmentRagdollMode": [],
-            "NPC L Hand [LHnd]": [-49.931641, 9.675781, 118.894630],
-            "NPC R Hand [RHnd]": [43.933594, -25.972656, 118.230751],
-            "NPC L Foot [Lft ]": [-3.802734, -3.625000, 17.417133],
-            "NPC R Foot [Rft ]": [1.435547, -0.703125, 16.715635]
+            "NPC L Hand [LHnd]": [-50.080078, -8.875000, 118.895248],
+            "NPC R Hand [RHnd]": [50.326172, -8.511719, 118.231140],
+            "NPC L Foot [Lft ]": [-2.248047, -4.753906, 17.415394],
+            "NPC R Foot [Rft ]": [1.597656, -0.160156, 16.714941]
         },
         "zbfWcnCrucifiedCruxMkII_DarkCoarseWood": {
             "animEvent": "wnc_crucified_loop",
@@ -687,8 +687,8 @@
             "bondLegs": 1,
             "equipmentAnimMode": [],
             "equipmentRagdollMode": ["zbfCuffsRope02"],
-            "NPC L Foot [Lft ]": [-11.929688, -16.453125, 157.122971],
-            "NPC R Foot [Rft ]": [-8.939453, -18.285156, 157.123840]
+            "NPC L Foot [Lft ]": [-1.761719, -20.261719, 157.123566],
+            "NPC R Foot [Rft ]": [1.755859, -20.261719, 157.123596]
         }
     }
 }
