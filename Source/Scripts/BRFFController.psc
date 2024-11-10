@@ -90,6 +90,8 @@ Function Remove(Actor ref)
     Int record = DBGetActorRecord(ref)
     ObjectReference furn = DBAGetFurniture(ref)
 
+    CPositionDummies(ref, checkConfig=False)
+
     ref.RemoveSpell(ActorSpell)
     ref.RemoveFromFaction(FFFaction)
     ref.IgnoreFriendlyHits(JMap.getInt(record, "ignoreFriendlyHits") as Bool)
@@ -463,7 +465,7 @@ Function CRemoveDummies(Actor ref)
     EndWhile
 EndFunction
 
-Function CPositionDummies(Actor ref)
+Function CPositionDummies(Actor ref, Bool checkConfig=True)
     Int nodes = CGetStrings(ref)
     Int i = 0
     While i < JArray.count(nodes)
@@ -471,7 +473,7 @@ Function CPositionDummies(Actor ref)
         ObjectReference dummy = DBAGetRef(ref, nodeName)
         If dummy
             Float[] pos = DBGetDummyPosition(ref, nodeName)
-            If pos
+            If checkConfig && pos
                 ObjectReference furn = DBAGetFurniture(ref)
                 Float posX = pos[0] * cos(-furn.GetAngleZ()) + pos[1] * sin(furn.GetAngleZ())
                 Float posY = pos[0] * sin(-furn.GetAngleZ()) + pos[1] * cos(-furn.GetAngleZ())
