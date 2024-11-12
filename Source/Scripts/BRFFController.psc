@@ -90,11 +90,10 @@ Function Remove(Actor ref)
     Int record = DBGetActorRecord(ref)
     ObjectReference furn = DBAGetFurniture(ref)
 
-    CPositionDummies(ref, checkConfig=False)
-
     ref.RemoveSpell(ActorSpell)
     ref.RemoveFromFaction(FFFaction)
     ref.IgnoreFriendlyHits(JMap.getInt(record, "ignoreFriendlyHits") as Bool)
+    CPositionDummies(ref, checkConfig=False)
     RDisable(ref)
     CDisable(ref, checkRagdollModeRuntime=False)
     If ref.IsDead()
@@ -171,11 +170,13 @@ Function AConfigure(Actor ref)
 EndFunction
 
 Function AMoveToFurn(Actor ref)
-    If ref.IsDead()
+    ObjectReference furn = DBAGetFurniture(ref)
+
+    If ref.IsDead() && ref.GetDistance(furn) < 192
         Return
     EndIf
 
-    SafeMoveTo(ref, DBAGetFurniture(ref))
+    SafeMoveTo(ref, furn)
 EndFunction
 
 Function ASAE(Actor ref)
