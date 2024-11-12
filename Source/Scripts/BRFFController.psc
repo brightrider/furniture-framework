@@ -152,6 +152,9 @@ Function Refresh()
             FConfigure(key_, furn)
             AConfigure(key_)
             CConfigure(key_)
+            If key_.IsDead()
+                key_.ApplyHavokImpulse(0.1, 0.1, 0.1, 0.1)
+            EndIf
         EndIf
         key_ = JFormMap.nextKey(ACTORS, key_) as Actor
     EndWhile
