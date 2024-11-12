@@ -144,6 +144,11 @@ Function Refresh()
         Actor player = Game.GetPlayer()
         ObjectReference furn = DBAGetFurniture(key_)
         If key_.Is3DLoaded() && furn.Is3DLoaded() && ((player.GetDistance(furn) < 102400) || player.HasLOS(furn))
+            If RActive(key_)
+                CDisable(key_)
+                RDisable(key_)
+                AReset(key_, furn)
+            EndIf
             FConfigure(key_, furn)
             AConfigure(key_)
             CConfigure(key_)
@@ -185,6 +190,23 @@ Function ASAE(Actor ref)
     EndIf
 
     Debug.SendAnimationEvent(ref, DBGetEvent(ref))
+EndFunction
+
+Function AReset(Actor ref, ObjectReference target=None, Bool saveEquipment=True)
+    If ref.IsDead()
+        Return
+    EndIf
+
+    Int equipment
+    If saveEquipment
+        equipment = EAddAllEquippedItemsToArrayStr(ref)
+    EndIf
+
+    ref.Reset(target)
+
+    If saveEquipment
+        EEquipFromJArray(ref, equipment, unequipAll=True, unequipAllRemoveGore=True)
+    EndIf
 EndFunction
 ; ----------------------------------------------------------------------------------------------------------------------
 
