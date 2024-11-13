@@ -7,6 +7,7 @@ Spell Property ActorSpell Auto
 Armor Property BeaterRing Auto
 Armor Property ExecutionerRing Auto
 Faction Property FFFaction Auto
+Package Property DoNothing Auto
 
 Int ACTORS
 
@@ -73,6 +74,7 @@ Function Add(Actor ref, ObjectReference furn)
     JMap.setFlt(record, "health", ref.GetAV("Health"))
     JMap.setInt(record, "ignoreFriendlyHits", ref.IsIgnoringFriendlyHits() as Int)
     JMap.setObj(record, "equipment", EAddAllEquippedItemsToArrayStr(ref))
+    JMap.setInt(record, "packageOverrides", ActorUtil.CountPackageOverride(ref))
     JMap.setInt(record, "collisionLayer", BRFFSKSELibrary.GetCollisionLayer(furn))
     JFormMap.setObj(ACTORS, ref, record)
 
@@ -101,6 +103,7 @@ Function Remove(Actor ref)
         CConstraintHandcuffsLegs(ref, checkDuplicate=False)
     EndIf
     CRemoveDummies(ref)
+    ActorUtil.RemovePackageOverride(ref, DoNothing)
     If ! ref.IsDead()
         ref.ForceAV("Health", JMap.getFlt(record, "health"))
         ERestore(ref)
@@ -143,12 +146,7 @@ Function Refresh()
     While key_
         Actor player = Game.GetPlayer()
         ObjectReference furn = DBAGetFurniture(key_)
-        If key_.Is3DLoaded() && furn.Is3DLoaded() && ((player.GetDistance(furn) < 102400) || player.HasLOS(furn))
-            If RActive(key_)
-                CDisable(key_)
-                RDisable(key_)
-                AReset(key_, furn)
-            EndIf
+        If furn.Is3DLoaded() && ((player.GetDistance(furn) < 102400) || player.HasLOS(furn))
             FConfigure(key_, furn)
             AConfigure(key_)
             CConfigure(key_)
@@ -165,6 +163,7 @@ EndFunction
 ; Actor
 ; ----------------------------------------------------------------------------------------------------------------------
 Function AConfigure(Actor ref)
+    AAddPackageOverride(ref, DoNothing, priority=100)
     If ! ref.IsDead()
         ref.ForceAV("Health", 1000000000)
     EndIf
@@ -193,6 +192,14 @@ Function ASAE(Actor ref)
     EndIf
 
     Debug.SendAnimationEvent(ref, DBGetEvent(ref))
+EndFunction
+
+Function AAddPackageOverride(Actor ref, Package targetPackage, Int priority=30)
+    If ActorUtil.CountPackageOverride(ref) > DBAGetPackageOverrides(ref)
+        Return
+    EndIf
+
+    ActorUtil.AddPackageOverride(ref, targetPackage, priority)
 EndFunction
 
 Function AReset(Actor ref, ObjectReference target=None, Bool saveEquipment=True)
@@ -297,6 +304,10 @@ EndFunction
 
 Int Function DBAGetEquipment(Actor ref)
     Return JMap.getObj(DBGetActorRecord(ref), "equipment")
+EndFunction
+
+Int Function DBAGetPackageOverrides(Actor ref)
+    Return JMap.getInt(DBGetActorRecord(ref), "packageOverrides")
 EndFunction
 
 ObjectReference Function DBAGetRef(Actor ref, String name)
