@@ -41,107 +41,66 @@
             "equipmentRagdollMode": []
         }
     },
-    "Display - Front": {
-        "zbfChainedUnderTheGallow01": {
-            "animEvent": "zazapchains01_loop",
-            "ragdollMode": 0,
-            "constraints": "H",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
-        },
-        "zbfRestraintPoleShackles01": {
-            "animEvent": "zazrspp01_loop",
-            "ragdollMode": 0,
-            "constraints": "NHL",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
-        },
-        "zbfRestraintPoleShackles01_DarkWood": {
-            "animEvent": "zazrspp01_loop",
-            "ragdollMode": 0,
-            "constraints": "NHL",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
-        },
-        "zbfRestraintPoleShackles01_MidWood": {
-            "animEvent": "zazrspp01_loop",
-            "ragdollMode": 0,
-            "constraints": "NHL",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
-        },
-        "zbfRestraintPoleShackles01_StdWood": {
-            "animEvent": "zazrspp01_loop",
-            "ragdollMode": 0,
-            "constraints": "NHL",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
-        },
-        "zbfRestraintWallShackles01": {
-            "animEvent": "zazrspp01_loop",
-            "ragdollMode": 0,
-            "constraints": "NHL",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsIronBlack"]
-        }
-    },
     "Display - UprightDown": {
         "zbfPoleBondageUprightDownHanging": {
             "animEvent": "zazuprightdown_loop",
-            "ragdollMode": 0,
+            "ragdollMode": 1,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsRope01"]
+            "equipmentRagdollMode": ["zbfCuffsRope01"],
+            "collisionEnabled": 1,
+            "NPC L Foot [Lft ]": [1.453125, -2.453125, 136.008499],
+            "NPC R Foot [Rft ]": [-2.707031, -1.285156, 136.271591]
         },
         "zbfPoleBondageUprightDownHanging_DarkWoor": {
             "animEvent": "zazuprightdown_loop",
-            "ragdollMode": 0,
+            "ragdollMode": 1,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsRope01"]
+            "equipmentRagdollMode": ["zbfCuffsRope01"],
+            "collisionEnabled": 1,
+            "NPC L Foot [Lft ]": [1.453125, -2.453125, 136.008499],
+            "NPC R Foot [Rft ]": [-2.707031, -1.285156, 136.271591]
         },
         "zbfPoleBondageUprightDownHanging_MidWoor": {
             "animEvent": "zazuprightdown_loop",
-            "ragdollMode": 0,
+            "ragdollMode": 1,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsRope01"]
+            "equipmentRagdollMode": ["zbfCuffsRope01"],
+            "collisionEnabled": 1,
+            "NPC L Foot [Lft ]": [1.453125, -2.453125, 136.008499],
+            "NPC R Foot [Rft ]": [-2.707031, -1.285156, 136.271591]
         },
         "zbfPoleBondageUprightDownHanging_StdWoor": {
             "animEvent": "zazuprightdown_loop",
-            "ragdollMode": 0,
+            "ragdollMode": 1,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsRope01"]
+            "equipmentRagdollMode": ["zbfCuffsRope01"],
+            "collisionEnabled": 1,
+            "NPC L Foot [Lft ]": [1.453125, -2.453125, 136.008499],
+            "NPC R Foot [Rft ]": [-2.707031, -1.285156, 136.271591]
         },
         "zbfPoleBondageUprightDownHangingMarker": {
             "animEvent": "zazuprightdown_loop",
-            "ragdollMode": 0,
+            "ragdollMode": 1,
             "constraints": "L",
             "bondArms": 1,
             "bondLegs": 1,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": ["zbfCuffsRope01"]
+            "equipmentRagdollMode": ["zbfCuffsRope01"],
+            "collisionEnabled": 1,
+            "NPC L Foot [Lft ]": [1.453125, -2.453125, 136.008499],
+            "NPC R Foot [Rft ]": [-2.707031, -1.285156, 136.271591]
         }
     },
     "Pole Dance": {
@@ -500,84 +459,36 @@
     "Shackles": {
         "zbfImpShackleWallHeadDown": {
             "animEvent": "zazshacklewallheaddownrigid_loop",
-            "ragdollMode": 0,
+            "ragdollMode": 1,
             "constraints": "L",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Foot [Lft ]": [-0.250000, -7.570313, 171.362274],
+            "NPC R Foot [Rft ]": [-6.191406, -4.441406, 171.643890]
         },
         "zbfImpShackleWallHeadDown_DarkSteel": {
             "animEvent": "zazshacklewallheaddownrigid_loop",
-            "ragdollMode": 0,
+            "ragdollMode": 1,
             "constraints": "L",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Foot [Lft ]": [-0.250000, -7.570313, 171.362274],
+            "NPC R Foot [Rft ]": [-6.191406, -4.441406, 171.643890]
         },
         "zbfImpShackleWallHeadDown_GreenYellowRust": {
             "animEvent": "zazshacklewallheaddownrigid_loop",
-            "ragdollMode": 0,
+            "ragdollMode": 1,
             "constraints": "L",
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
-        },
-        "zbfImpShackleWallRigid": {
-            "animEvent": "zazshacklewallrigid_loop",
-            "ragdollMode": 0,
-            "constraints": "H",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
-        },
-        "zbfImpShackleWallRigid_DarkSteel": {
-            "animEvent": "zazshacklewallrigid_loop",
-            "ragdollMode": 0,
-            "constraints": "H",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
-        },
-        "zbfImpShackleWallRigid_GreenYellowRust": {
-            "animEvent": "zazshacklewallrigid_loop",
-            "ragdollMode": 0,
-            "constraints": "H",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
-        },
-        "zbfImpShackleWallStrict": {
-            "animEvent": "zazapstrictwallshacklescustom_loop",
-            "ragdollMode": 0,
-            "constraints": "NHL",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
-        },
-        "zbfImpShackleWallStrict_DarkSteel": {
-            "animEvent": "zazapstrictwallshacklescustom_loop",
-            "ragdollMode": 0,
-            "constraints": "NHL",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
-        },
-        "zbfImpShackleWallStrict_GreenYellowRust": {
-            "animEvent": "zazapstrictwallshacklescustom_loop",
-            "ragdollMode": 0,
-            "constraints": "NHL",
-            "bondArms": 0,
-            "bondLegs": 0,
-            "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC L Foot [Lft ]": [-0.250000, -7.570313, 171.362274],
+            "NPC R Foot [Rft ]": [-6.191406, -4.441406, 171.643890]
         }
     },
     "Impalers": {
@@ -588,7 +499,9 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC Head [Head]": [14.035156, 31.367188, 114.517303],
+            "NPC Spine2 [Spn2]": [4.623047, 10.386719, 127.965523]
         },
         "zbfWcnImpaled_Copper": {
             "animEvent": "wnc_impaled_loop",
@@ -597,7 +510,9 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC Head [Head]": [14.035156, 31.367188, 114.517303],
+            "NPC Spine2 [Spn2]": [4.623047, 10.386719, 127.965523]
         },
         "zbfWcnImpaled_Gold": {
             "animEvent": "wnc_impaled_loop",
@@ -606,7 +521,9 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC Head [Head]": [14.035156, 31.367188, 114.517303],
+            "NPC Spine2 [Spn2]": [4.623047, 10.386719, 127.965523]
         },
         "zbfWcnImpaled_GreenRust": {
             "animEvent": "wnc_impaled_loop",
@@ -615,7 +532,9 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC Head [Head]": [14.035156, 31.367188, 114.517303],
+            "NPC Spine2 [Spn2]": [4.623047, 10.386719, 127.965523]
         },
         "zbfWcnImpaled_GreyRust": {
             "animEvent": "wnc_impaled_loop",
@@ -624,7 +543,9 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC Head [Head]": [14.035156, 31.367188, 114.517303],
+            "NPC Spine2 [Spn2]": [4.623047, 10.386719, 127.965523]
         },
         "zbfWcnImpaled_IntensiveRust": {
             "animEvent": "wnc_impaled_loop",
@@ -633,7 +554,9 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC Head [Head]": [14.035156, 31.367188, 114.517303],
+            "NPC Spine2 [Spn2]": [4.623047, 10.386719, 127.965523]
         },
         "zbfWcnImpaled_RedRust": {
             "animEvent": "wnc_impaled_loop",
@@ -642,7 +565,9 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC Head [Head]": [14.035156, 31.367188, 114.517303],
+            "NPC Spine2 [Spn2]": [4.623047, 10.386719, 127.965523]
         },
         "zbfWcnImpaled_ShinyMetal": {
             "animEvent": "wnc_impaled_loop",
@@ -651,7 +576,9 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "NPC Head [Head]": [14.035156, 31.367188, 114.517303],
+            "NPC Spine2 [Spn2]": [4.623047, 10.386719, 127.965523]
         }
     },
     "Work": {
