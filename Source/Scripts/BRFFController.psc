@@ -537,7 +537,8 @@ Function CEnable(Actor ref)
     While i < JArray.count(nodes)
         ObjectReference dummy = DBAGetRef(ref, JArray.getStr(nodes, i))
         If dummy
-            Game.AddHavokBallAndSocketConstraint(ref, JArray.getStr(nodes, i), dummy, "AttachDummy")
+            Float[] pos = DBGetDummyPosition(ref, JArray.getStr(nodes, i))
+            Game.AddHavokBallAndSocketConstraint(ref, JArray.getStr(nodes, i), dummy, "AttachDummy", pos[3], pos[4], pos[5])
         EndIf
         i += 1
     EndWhile
