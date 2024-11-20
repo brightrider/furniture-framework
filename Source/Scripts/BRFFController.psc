@@ -173,6 +173,7 @@ Function AConfigure(Actor ref)
     ASAE(ref)
     REnable(ref)
     EEquip(ref)
+    ASetDontMove(ref)
     ref.AddSpell(ActorSpell)
 EndFunction
 
@@ -200,6 +201,20 @@ Function AAddPackageOverride(Actor ref, Package targetPackage, Int priority=30)
     EndIf
 
     ActorUtil.AddPackageOverride(ref, targetPackage, priority)
+EndFunction
+
+Function ASetDontMove(Actor ref, Bool checkConfig=True)
+    If checkConfig && ! DBGetSetDontMove(ref)
+        ref.SetDontMove(False)
+        Return
+    EndIf
+
+    If CAllowed(ref, checkRagdollModeRuntime=False)
+        ref.SetDontMove(False)
+        Return
+    EndIf
+
+    ref.SetDontMove()
 EndFunction
 
 Function AReset(Actor ref, ObjectReference target=None, Bool saveEquipment=True)
@@ -284,6 +299,10 @@ EndFunction
 
 Int Function DBGetEquipmentRagdollMode(Actor ref)
     Return JMap.getObj(DBGetMappingRecord(ref), "equipmentRagdollMode")
+EndFunction
+
+Bool Function DBGetSetDontMove(Actor ref)
+    Return JMap.getInt(DBGetMappingRecord(ref), "setDontMove") as Bool
 EndFunction
 
 Bool Function DBGetCollisionEnabled(Actor ref)

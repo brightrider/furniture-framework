@@ -194,7 +194,8 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "setDontMove": 1
         },
         "zbfWaterWheelIndoor": {
             "animEvent": "xzazwaterbondagewheelindoorspin",
@@ -203,7 +204,8 @@
             "bondArms": 0,
             "bondLegs": 0,
             "equipmentAnimMode": [],
-            "equipmentRagdollMode": []
+            "equipmentRagdollMode": [],
+            "setDontMove": 1
         },
         "zbfWaterWheelMini": {
             "animEvent": "xwaterwheelminispin",
