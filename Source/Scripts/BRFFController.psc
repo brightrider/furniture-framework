@@ -25,33 +25,48 @@ Event OnInit()
     DBInit()
 
     RegisterForKey(0x3B)
+    RegisterForKey(0x3C)
+    RegisterForKey(0x3D)
 EndEvent
 
 Event OnKeyDown(Int keyCode)
     ObjectReference selectedRef = Game.GetCurrentCrosshairRef()
 
-    ; TODO: Check if selectedRef is in use by this mod.
-    If selectedRef.GetBaseObject() as Furniture && ! selectedRef.IsFurnitureInUse()
-        selectedFurniture = selectedRef
-        Debug.Notification("Select: " + selectedFurniture.GetBaseObject().GetName())
-        Return
+    If keyCode == 0x3B
+        ; TODO: Check if selectedRef is in use by this mod.
+        If selectedRef.GetBaseObject() as Furniture && ! selectedRef.IsFurnitureInUse()
+            selectedFurniture = selectedRef
+            Debug.Notification("Select: " + selectedFurniture.GetBaseObject().GetName())
+            Return
+        EndIf
+    
+        If JFormMap.hasKey(ACTORS, selectedRef)
+            Remove(selectedRef as Actor)
+            Debug.Notification("Remove: " + selectedRef.GetBaseObject().GetName())
+            Return
+        EndIf
+    
+        If selectedFurniture && (selectedRef as Actor)
+            Add(selectedRef as Actor, selectedFurniture)
+            selectedFurniture = None
+            Debug.Notification("Add: " + selectedRef.GetBaseObject().GetName())
+            Return
+        EndIf
     EndIf
 
-    If JFormMap.hasKey(ACTORS, selectedRef)
-        Remove(selectedRef as Actor)
-        Debug.Notification("Remove: " + selectedRef.GetBaseObject().GetName())
-        Return
+    If keyCode == 0x3C
+        If JFormMap.hasKey(ACTORS, selectedRef)
+            RefreshActor(selectedRef as Actor)
+            Debug.Notification("Refresh: " + selectedRef.GetBaseObject().GetName())
+            Return
+        EndIf
     EndIf
 
-    If selectedFurniture && (selectedRef as Actor)
-        Add(selectedRef as Actor, selectedFurniture)
-        selectedFurniture = None
-        Debug.Notification("Add: " + selectedRef.GetBaseObject().GetName())
+    If keyCode == 0x3D
+        Refresh()
+        Debug.Notification("Refresh")
         Return
     EndIf
-
-    Refresh()
-    Debug.Notification("Refresh")
 EndEvent
 
 Event ActorHit(Actor ref, Actor attacker)
@@ -144,18 +159,26 @@ EndFunction
 Function Refresh()
     Actor key_ = JFormMap.nextKey(ACTORS) as Actor
     While key_
-        Actor player = Game.GetPlayer()
-        ObjectReference furn = DBAGetFurniture(key_)
-        If furn.Is3DLoaded() && ((player.GetDistance(furn) < 102400) || player.HasLOS(furn))
-            FConfigure(key_, furn)
-            AConfigure(key_)
-            CConfigure(key_)
-            If key_.IsDead()
-                key_.ApplyHavokImpulse(0.1, 0.1, 0.1, 0.1)
-            EndIf
-        EndIf
+        RefreshActor(key_)
         key_ = JFormMap.nextKey(ACTORS, key_) as Actor
     EndWhile
+EndFunction
+
+Function RefreshActor(Actor ref)
+    Actor player = Game.GetPlayer()
+    ObjectReference furn = DBAGetFurniture(ref)
+    If furn.Is3DLoaded() && ((player.GetDistance(furn) < 102400) || player.HasLOS(furn))
+        FConfigure(ref, furn)
+        AConfigure(ref)
+        CDisable(ref)
+        If ref.IsDead()
+            ref.ApplyHavokImpulse(10, 10, 0, 100)
+        EndIf
+        CConfigure(ref)
+        If ref.IsDead()
+            ref.ApplyHavokImpulse(0.1, 0.1, 0.1, 0.1)
+        EndIf
+    EndIf
 EndFunction
 ; ----------------------------------------------------------------------------------------------------------------------
 
