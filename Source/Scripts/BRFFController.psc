@@ -6,6 +6,7 @@ Import NetImmerse
 Spell Property ActorSpell Auto
 Armor Property BeaterRing Auto
 Armor Property ExecutionerRing Auto
+Armor Property ExecutionerRing_Remove Auto
 Faction Property FFFaction Auto
 Package Property DoNothing Auto
 
@@ -77,6 +78,11 @@ Event ActorHit(Actor ref, Actor attacker)
     If attacker.IsEquipped(ExecutionerRing)
         Kill(ref)
     EndIf
+
+    If attacker.IsEquipped(ExecutionerRing_Remove)
+        Kill(ref)
+        Remove(ref)
+    EndIf
 EndEvent
 ; ----------------------------------------------------------------------------------------------------------------------
 
@@ -93,7 +99,7 @@ Function Add(Actor ref, ObjectReference furn)
     JMap.setInt(record, "collisionLayer", BRFFSKSELibrary.GetCollisionLayer(furn))
     JFormMap.setObj(ACTORS, ref, record)
 
-    Refresh()
+    RefreshActor(ref)
 
     Int handle = ModEvent.Create("BRFF_Add")
     If handle
@@ -149,7 +155,7 @@ Function Kill(Actor ref)
 
     RDisable(ref)
 
-    ref.Kill()
+    ref.Kill(Game.GetPlayer())
 
     If ! DBGetRagdollMode(ref)
         CEnable(ref)
