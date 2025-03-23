@@ -28,5 +28,11 @@ Event OnEffectStart(Actor akTarget, Actor akCaster)
         Return
     EndIf
 
-    Game.GetPlayer().PlaceAtMe(PO3_SKSEFunctions.GetFormFromEditorID(result))
+    ObjectReference furn = Game.GetPlayer().PlaceAtMe(PO3_SKSEFunctions.GetFormFromEditorID(result))
+    UIExtensions.InitMenu("UITextEntryMenu")
+    UIExtensions.OpenMenu("UITextEntryMenu")
+    String name = UIExtensions.GetMenuResultString("UITextEntryMenu")
+    If name
+        furn.SetDisplayName(name, force=True)
+    EndIf
 EndEvent
